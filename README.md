@@ -5,8 +5,8 @@ This LWC starter project includes Salesforce Lightning Design System and Lightni
 ## Running the Project in dev Mode
 
 ```bash
-yarn install
-yarn dev # dev:compat for AMD format
+npm install
+npm run dev # dev:compat for AMD format
 ```
 
 Open the site at [http://localhost:3000](http://localhost:3000)
@@ -14,8 +14,8 @@ Open the site at [http://localhost:3000](http://localhost:3000)
 ## Statically Generate and Preview the Site
 
 ```bash
-yarn build # dev:prod-compat for AMD format
-yarn start
+npm build # dev:prod-compat for AMD format
+npm start
 ```
 
 Open the site at [http://localhost:3000](http://localhost:3000)
