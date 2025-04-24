@@ -2,7 +2,7 @@
 
 This LWC starter project includes Salesforce Lightning Design System and Lightning Base Components for quickly building Salesforce interfaces.
 
-## Get Started (Recommended for Designers)
+## Designer - Cursor Quick Start
 1. Click the green **"Use this template"** button at the top-right of this page.
 2. Choose **“Create a new repository”**
 3. Name your new repo, mark it as **private**, and then click **"Create repository"**.
