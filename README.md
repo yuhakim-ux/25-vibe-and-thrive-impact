@@ -4,8 +4,11 @@ This LWC starter project includes Salesforce Lightning Design System and Lightni
 
 ## Get Started (Recommended for Designers)
 1. Click the green **"Use this template"** button at the top-right of this page.
-2. Name your new repo and hit "Create repository".
-3. Open it in Cursor using `cmd+p` → "Open Repository...".
+2. Choose **“Create a new repository”**
+3. Name your new repo, mark it as **private**, and then click **"Create repository"**.
+4. You will be navigated to your new repo. Copy the URL.
+5. Open Cursor, and select **“Clone repo”** and paste the URL.
+6. Then, in the Cursor command line, run `npm install`. Once that is complete, run `npm run dev` and open `http://localhost:3000/` in your browser to see a live preview while you work on your project!
 
 That’s it. You’re ready to start prompting in Cursor.
 
