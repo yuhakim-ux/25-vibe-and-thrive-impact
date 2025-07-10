@@ -1,3 +1,8 @@
+---
+description: 
+globs: **/*.css, **/*.html, **/*.cmp, **/*.js
+alwaysApply: false
+---
 # Foundational Principles for Salesforce UI Development
 
 Whenever developing Salesforce experiences—especially using LWC and SLDS—follow these foundational guidelines to ensure scalable, maintainable, and consistent UI code:
