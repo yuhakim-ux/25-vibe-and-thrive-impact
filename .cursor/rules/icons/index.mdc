@@ -1,9 +1,9 @@
 ---
-description: 
-globs: 
 alwaysApply: false
 ---
 # Icon Metadata Guide
+
+[View raw icons.json](mdc:.cursor/rules/icons/icons.json)
 
 ## Structure
 - Each icon has:
@@ -44,7 +44,6 @@ Use the following pattern for accessibility and clarity:
 - (add more as needed)
 
 ## Tips
-- Use the `index` (if present) for a quick overview of all available icons.
 - If you know the SLDS class, you can use `className` directly in your markup.
 - For best results, search by tag/keyword in `synonyms`.
 - Keep your icon metadata up to date as your design system evolves.
