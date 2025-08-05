@@ -9,7 +9,11 @@ This LWC starter project includes Salesforce Lightning Design System and Lightni
 4. You will be navigated to your new repo. Copy the URL.
 5. Open Cursor, and select **“Clone repo”** and paste the URL.
 6. Then, in the Cursor command line, run `npm install` (this can take a couple of minutes).
-7. Once that is complete, run `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser to see a live preview while you work on your project!
+   * If this is your first time using the command line, you may not have node (npm) installed. If you get a “command not found” error when you try to run the above, install Homebrew and node first, and then try again:
+   * Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+   * Install node: `brew install node`
+   * Try running `npm install` again.
+8. Once that is complete, run `npm run dev` and open [http://localhost:3000](http://localhost:3000) in your browser to see a live preview while you work on your project!
 
 That’s it. You’re ready to start prompting in Cursor.
 
