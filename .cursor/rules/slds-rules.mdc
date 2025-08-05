@@ -196,7 +196,3 @@ When writing UI code, always prioritize the following order for styling and layo
 - For questions, feedback, or to propose updates to these rules, please contact the design system team at design.system@salesforce.com or submit a pull request to the rules repository.
 - Stay updated with the latest Lightning Design System releases and Salesforce accessibility standards. Always refer to https://lightningdesignsystem.com and https://developer.salesforce.com/docs/component-library/overview/components for source-of-truth documentation. 
 ---
-
-## Feedback and Updates
-- For questions, feedback, or to propose updates to these rules, please contact the design system team at design.system@salesforce.com or submit a pull request to the rules repository.
-- Stay updated with the latest Lightning Design System releases and Salesforce accessibility standards. Always refer to https://lightningdesignsystem.com and https://developer.salesforce.com/docs/component-library/overview/components for source-of-truth documentation. 
