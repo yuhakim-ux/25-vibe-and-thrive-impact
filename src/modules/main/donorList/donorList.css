@@ -526,6 +526,11 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+    color: #C9C9C9;
+}
+
+.agentforce-send-button:not(:disabled) {
+    color: #0250D9;
 }
 
 .agentforce-send-button:disabled {
@@ -536,21 +541,9 @@
 .agentforce-send-icon {
     width: 14.77px;
     height: 12.43px;
-    position: relative;
-}
-
-.agentforce-send-icon::before {
-    content: '';
-    position: absolute;
-    width: 14.77px;
-    height: 12.43px;
-    left: 0.62px;
-    top: 1.87px;
-    background: #C9C9C9;
-}
-
-.agentforce-send-button:not(:disabled) .agentforce-send-icon::before {
-    background: #0250D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Typing Animation */
