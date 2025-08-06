@@ -366,4 +366,28 @@ export default class DonorList extends LightningElement {
         console.log('Save action triggered for upgrade potential sort');
         // Placeholder for save functionality
     }
+
+    handleFilterInPerson() {
+        console.log('Filtering further to "Prefers in-person"');
+        // Filter the current donor data to show only those who prefer in-person meetings
+        const filteredData = this.donorData.filter(donor => {
+            // Add a random preference for demonstration
+            return Math.random() > 0.5; // Simulate preference filtering
+        });
+        this.donorData = filteredData;
+        // Keep the preview bar visible
+        this.isAskPopoverOpen = false;
+    }
+
+    handleFlagBoardMember() {
+        console.log('Flagging for Board Member Outreach');
+        // Flag selected donors for board member outreach
+        const flaggedData = this.donorData.map(donor => ({
+            ...donor,
+            boardMemberFlag: true // Add flag to donor records
+        }));
+        this.donorData = flaggedData;
+        // Keep the preview bar visible
+        this.isAskPopoverOpen = false;
+    }
 }

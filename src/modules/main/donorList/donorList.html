@@ -187,18 +187,35 @@
                       <div class="slds-media__figure slds-p-left_medium ask-popover-container">
               <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
               <template if:true={isAskPopoverOpen}>
-                <section class="slds-popover slds-nubbin_bottom-left" role="dialog">
-                  <div class="slds-popover__body">
-                    <lightning-textarea name="ask" label="Tell me what you need!"></lightning-textarea>
-                    <div class="slds-m-top_medium">
-                      <lightning-button label="Filter further to “Prefers in-person”" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
-                      <lightning-button label="Flag for Board Member Outreach" class="slds-button_stretch"></lightning-button>
+                <div class="ask-popover-custom" role="dialog">
+                  <div class="ask-popover-header">
+                    <div class="ask-popover-title">Ask</div>
+                    <lightning-button-icon 
+                      icon-name="utility:close" 
+                      variant="bare" 
+                      size="small"
+                      alternative-text="Close" 
+                      onclick={handlePreviewAsk}
+                      class="ask-popover-close">
+                    </lightning-button-icon>
+                  </div>
+                  <div class="ask-popover-body">
+                    <div class="ask-input-container">
+                      <div class="ask-input-placeholder">Tell me what you need!</div>
+                    </div>
+                    <div class="ask-suggestions">
+                      <button class="ask-suggestion-button" onclick={handleFilterInPerson}>
+                        Filter further to "Prefers in-person"
+                      </button>
+                      <button class="ask-suggestion-button" onclick={handleFlagBoardMember}>
+                        Flag for Board Member Outreach
+                      </button>
                     </div>
                   </div>
-                  <footer class="slds-popover__footer">
-                    <lightning-button label="Apply" variant="brand" class="slds-p-left_xx-small slds-p-right_xx-small"></lightning-button>
-                  </footer>
-                </section>
+                  <div class="ask-popover-footer">
+                    <lightning-button label="Apply" variant="brand" class="ask-apply-button"></lightning-button>
+                  </div>
+                </div>
               </template>
               <lightning-button label="Save" variant="neutral" onclick={handlePreviewSave} class="slds-m-right_x-small"></lightning-button>
               <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close preview" onclick={handlePreviewClose}></lightning-button-icon>
