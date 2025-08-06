@@ -20,7 +20,7 @@ We successfully built an interactive Salesforce donor management prototype enhan
 1. **Define the Vision**
    - Define the essence of what the prototype should accomplish
       - In our case, enabling users to quickly act on donor insights via AI-powered sorting and filtering in the Salesforce list view
-   - Write a mini-PRD, outlining the prototype we want to build
+   - Write a mini-PRD, outlining the prototype you want to build
   
 2. **Map the High-Level Interaction Flow**
    - Brainstorming the userflow that shapes the prototype’s scope from entry point to completion
