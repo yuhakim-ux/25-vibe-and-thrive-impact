@@ -230,8 +230,11 @@ fundraisers. Follow these rules for implementation:
 ### **For Designers**
 1. **Think in Components**: Design with Lightning Base Components in mind
 2. **Document Interactions**: Specify hover states, focus behaviors, and error handling
-3. **Consider Accessibility**: Design with screen readers and keyboard navigation
-4. **Use Real Data**: Prototype with realistic content and edge cases
+3. **Communicate Design Intent Without Code**: Use Design Language
+   - ❌ "Make it pop more" → ✅ "Increase the contrast and size of the main headline"
+   - ❌ "It feels cramped" → ✅ "Add more white space around each section"
+   - ❌ "Make it more premium" → ✅ "Use a darker color scheme with gold accents"
+   - ❌ "It's too busy" → ✅ "Remove some elements and make the remaining ones bigger"
 
 ### **For Teams**
 1. **Establish Patterns**: Create reusable component libraries
