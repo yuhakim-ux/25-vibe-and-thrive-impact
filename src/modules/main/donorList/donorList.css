@@ -314,17 +314,9 @@
 .agentforce-expand-icon {
     width: 14px;
     height: 14px;
-    position: relative;
-}
-
-.agentforce-expand-icon::before {
-    content: '';
-    position: absolute;
-    width: 6.46px;
-    height: 10.22px;
-    left: 3.77px;
-    top: 1.88px;
-    background: #0250D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .agentforce-messages-container {
