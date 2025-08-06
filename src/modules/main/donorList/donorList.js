@@ -314,8 +314,16 @@ export default class DonorList extends LightningElement {
         
         // Special handling for Upgrade Potential
         if (sortType === 'upgradePotential') {
-            this.addPlaceholderData(sortType);
-            this.handleSort({ detail: { fieldName: sortType, sortDirection: 'desc' } });
+            // Assign random upgradePotential score to each donor
+            const donorsWithScore = this.originalDonorData.map(donor => ({
+                ...donor,
+                upgradePotential: Math.random()
+            }));
+            // Sort descending and take top 10
+            const sorted = donorsWithScore.sort((a, b) => b.upgradePotential - a.upgradePotential).slice(0, 10);
+            this.donorData = sorted;
+            this.sortedBy = 'upgradePotential';
+            this.sortedDirection = 'desc';
             this.showPreviewBar = true;
         } else {
             this.addPlaceholderData(sortType);
