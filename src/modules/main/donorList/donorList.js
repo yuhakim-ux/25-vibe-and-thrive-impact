@@ -60,6 +60,7 @@ export default class DonorList extends LightningElement {
     @track sortedDirection = 'asc';
     @track isPopoverOpen = false;
     @track showPreviewBar = false;
+    @track isAskPopoverOpen = false;
     columns = COLUMNS;
 
     get containerClass() {
@@ -358,8 +359,7 @@ export default class DonorList extends LightningElement {
     }
 
     handlePreviewAsk() {
-        console.log('Ask action triggered for top 10 donors');
-        // Placeholder for ask functionality
+        this.isAskPopoverOpen = !this.isAskPopoverOpen;
     }
 
     handlePreviewSave() {

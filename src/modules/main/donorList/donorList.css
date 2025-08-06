@@ -180,3 +180,7 @@
     overflow: hidden;
 }
 
+.ask-popover-container {
+    position: relative;
+}
+

@@ -184,11 +184,25 @@
           <div class="slds-media__body">
             <p>Sorted by Upgrade Potential: Top 10 Donors with High Scores</p>
           </div>
-          <div class="slds-media__figure slds-p-left_medium">
-            <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
-            <lightning-button label="Save" variant="neutral" onclick={handlePreviewSave} class="slds-m-right_x-small"></lightning-button>
-            <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close preview" onclick={handlePreviewClose}></lightning-button-icon>
-          </div>
+                      <div class="slds-media__figure slds-p-left_medium ask-popover-container">
+              <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
+              <template if:true={isAskPopoverOpen}>
+                <section class="slds-popover slds-nubbin_bottom-left" role="dialog" style="position: absolute; top: 45px; right: 0;">
+                  <div class="slds-popover__body">
+                    <lightning-textarea name="ask" label="Tell me what you need!"></lightning-textarea>
+                    <div class="slds-m-top_medium">
+                      <lightning-button label="Filter further to “Prefers in-person”" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
+                      <lightning-button label="Flag for Board Member Outreach" class="slds-button_stretch"></lightning-button>
+                    </div>
+                  </div>
+                  <footer class="slds-popover__footer">
+                    <lightning-button label="Apply" variant="brand" class="slds-p-left_xx-small slds-p-right_xx-small"></lightning-button>
+                  </footer>
+                </section>
+              </template>
+              <lightning-button label="Save" variant="neutral" onclick={handlePreviewSave} class="slds-m-right_x-small"></lightning-button>
+              <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close preview" onclick={handlePreviewClose}></lightning-button-icon>
+            </div>
         </div>
       </div>
     </template>
