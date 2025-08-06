@@ -194,7 +194,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 7500,
                 engagementScore: 68,
                 lifetimeGiving: 45000,
-                primaryContact: 'Sarah Davis'
+                primaryContact: 'Sarah Davis',
+                preferredContactMethod: 'Phone'
             },
             {
                 id: '12',
@@ -204,7 +205,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 200000,
                 engagementScore: 96,
                 lifetimeGiving: 1800000,
-                primaryContact: 'Benjamin Carter'
+                primaryContact: 'Benjamin Carter',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '13',
@@ -214,7 +216,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 15000,
                 engagementScore: 75,
                 lifetimeGiving: 60000,
-                primaryContact: 'Chloe Kim'
+                primaryContact: 'Chloe Kim',
+                preferredContactMethod: 'Email'
             },
             {
                 id: '14',
@@ -224,7 +227,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 20000,
                 engagementScore: 82,
                 lifetimeGiving: 110000,
-                primaryContact: 'James Peterson'
+                primaryContact: 'James Peterson',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '15',
@@ -234,7 +238,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 90000,
                 engagementScore: 79,
                 lifetimeGiving: 600000,
-                primaryContact: 'Isabelle Moreau'
+                primaryContact: 'Isabelle Moreau',
+                preferredContactMethod: 'Phone'
             },
             {
                 id: '16',
@@ -244,7 +249,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 300000,
                 engagementScore: 99,
                 lifetimeGiving: 3200000,
-                primaryContact: 'Leonardo Vasari'
+                primaryContact: 'Leonardo Vasari',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '17',
@@ -254,7 +260,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 50000,
                 engagementScore: 70,
                 lifetimeGiving: 220000,
-                primaryContact: 'Henry Williams'
+                primaryContact: 'Henry Williams',
+                preferredContactMethod: 'Email'
             },
             {
                 id: '18',
@@ -264,7 +271,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 45000,
                 engagementScore: 84,
                 lifetimeGiving: 180000,
-                primaryContact: 'Naomi Tanaka'
+                primaryContact: 'Naomi Tanaka',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '19',
@@ -274,8 +282,46 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 175000,
                 engagementScore: 91,
                 lifetimeGiving: 1500000,
-                primaryContact: 'Gideon Graves'
+                primaryContact: 'Gideon Graves',
+                preferredContactMethod: 'Email'
             }
+        ];
+        
+        // Add additional donors to reach 100+ total
+        for (let i = 20; i <= 105; i++) {
+            const donorTypes = ['Individual', 'Corporation', 'Foundation', 'Trust', 'Family Foundation'];
+            const contactMethods = ['Email', 'Phone', 'In-person', 'Mail'];
+            const firstNames = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Avery', 'Quinn', 'Sage', 'River'];
+            const lastNames = ['Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin', 'Lee'];
+            const orgNames = ['Tech Solutions', 'Global Partners', 'Community Trust', 'Innovation Fund', 'Future Foundation', 'Heritage Group', 'Pioneer Corp', 'Visionary Trust', 'Unity Foundation', 'Progress Partners'];
+            
+            const donorType = donorTypes[i % donorTypes.length];
+            const isIndividual = donorType === 'Individual';
+            const firstName = firstNames[i % firstNames.length];
+            const lastName = lastNames[i % lastNames.length];
+            const orgName = orgNames[i % orgNames.length];
+            
+            // For the first 30 additional donors (IDs 20-49), make some prefer in-person
+            // This ensures we have enough in-person donors in the top upgrade potential group
+            let contactMethod;
+            if (i >= 20 && i <= 27) { // 8 donors with in-person preference for top upgrade potential
+                contactMethod = 'In-person';
+            } else {
+                contactMethod = contactMethods[i % contactMethods.length];
+            }
+            
+            data.push({
+                id: i.toString(),
+                donorName: isIndividual ? `${firstName} ${lastName}` : `${orgName} ${donorType}`,
+                donorType: donorType,
+                lastGiftDate: new Date(2023, (i % 12), (i % 28) + 1),
+                nextAskAmount: Math.floor(Math.random() * 200000) + 5000,
+                engagementScore: Math.floor(Math.random() * 40) + 60,
+                lifetimeGiving: Math.floor(Math.random() * 500000) + 10000,
+                primaryContact: isIndividual ? `${firstName} ${lastName}` : `${firstName} ${lastName}`,
+                preferredContactMethod: contactMethod
+            });
+        }
         ];
         
         // Store original data and set current data
@@ -332,8 +378,8 @@ export default class DonorList extends LightningElement {
                 ...donor,
                 upgradePotential: Math.random()
             }));
-            // Sort descending and take top 10
-            const sorted = donorsWithScore.sort((a, b) => b.upgradePotential - a.upgradePotential).slice(0, 10);
+            // Sort descending and take top 30
+            const sorted = donorsWithScore.sort((a, b) => b.upgradePotential - a.upgradePotential).slice(0, 30);
             this.donorData = sorted;
             this.sortedBy = 'upgradePotential';
             this.sortedDirection = 'desc';
