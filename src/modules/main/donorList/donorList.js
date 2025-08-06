@@ -55,9 +55,11 @@ const COLUMNS = [
 
 export default class DonorList extends LightningElement {
     @track donorData = [];
+    @track originalDonorData = [];
     @track sortedBy = 'donorName';
     @track sortedDirection = 'asc';
     @track isPopoverOpen = false;
+    @track showPreviewBar = false;
     columns = COLUMNS;
 
     connectedCallback() {
@@ -66,7 +68,7 @@ export default class DonorList extends LightningElement {
 
     loadDonorData() {
         // Sample donor data for the prototype
-        this.donorData = [
+        const data = [
             {
                 id: '1',
                 donorName: 'The Charitable Foundation',
@@ -258,6 +260,10 @@ export default class DonorList extends LightningElement {
                 primaryContact: 'Gideon Graves'
             }
         ];
+        
+        // Store original data and set current data
+        this.originalDonorData = [...data];
+        this.donorData = [...data];
     }
 
     handleRowSelection(event) {
@@ -301,8 +307,17 @@ export default class DonorList extends LightningElement {
     handleAIPredictiveSort(event) {
         const sortType = event.target.dataset.sortType;
         console.log(`Placeholder: Sorting by "${sortType}"`);
-        this.addPlaceholderData(sortType);
-        this.handleSort({ detail: { fieldName: sortType, sortDirection: 'desc' } });
+        
+        // Special handling for Upgrade Potential
+        if (sortType === 'upgradePotential') {
+            this.addPlaceholderData(sortType);
+            this.handleSort({ detail: { fieldName: sortType, sortDirection: 'desc' } });
+            this.showPreviewBar = true;
+        } else {
+            this.addPlaceholderData(sortType);
+            this.handleSort({ detail: { fieldName: sortType, sortDirection: 'desc' } });
+        }
+        
         this.isPopoverOpen = false;
     }
 
@@ -320,5 +335,23 @@ export default class DonorList extends LightningElement {
                 [sortType]: Math.random()
             }));
         }
+    }
+
+    handlePreviewClose() {
+        // Reset to original state
+        this.showPreviewBar = false;
+        this.donorData = [...this.originalDonorData];
+        this.sortedBy = 'donorName';
+        this.sortedDirection = 'asc';
+    }
+
+    handlePreviewAsk() {
+        console.log('Ask action triggered for top 10 donors');
+        // Placeholder for ask functionality
+    }
+
+    handlePreviewSave() {
+        console.log('Save action triggered for upgrade potential sort');
+        // Placeholder for save functionality
     }
 }

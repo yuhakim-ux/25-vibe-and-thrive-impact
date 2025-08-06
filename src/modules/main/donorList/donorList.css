@@ -156,3 +156,16 @@
         transition: none;
     }
 }
+
+/* Preview Bar Styling */
+.preview-bar {
+    background: var(--slds-g-color-brand-base-10);
+    border: 1px solid var(--slds-g-color-brand-base-40);
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.preview-bar h2 {
+    color: var(--slds-g-color-neutral-base-10);
+    font-weight: 600;
+}
