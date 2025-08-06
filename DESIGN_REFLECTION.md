@@ -18,7 +18,7 @@ We successfully built an interactive Salesforce donor management prototype enhan
 
 ### **Phase 0: Pre-Vibe Steps**
 1. **Define the Vision**
-   - Define the essence of What the prototype should accomplish
+   - Define the essence of what the prototype should accomplish
    - In our case, enabling users to quickly act on donor insights via AI-powered sorting and filtering in the Salesforce list view
    - Write a mini-PRD, outlining the prototype we want to build
   
