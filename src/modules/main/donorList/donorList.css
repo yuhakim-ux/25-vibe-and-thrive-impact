@@ -184,3 +184,11 @@
     position: relative;
 }
 
+.ask-popover-container .slds-popover {
+    z-index: 10000 !important;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    min-width: 300px;
+}
+
