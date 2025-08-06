@@ -176,17 +176,18 @@
 
     <!-- Preview Bar -->
     <template if:true={showPreviewBar}>
-      <div class="slds-col slds-size_1-of-1 slds-p-horizontal_medium">
-        <div class="preview-bar slds-p-around_medium">
-          <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
-            <div class="slds-grid slds-grid_vertical-align-center">
-              <h2 class="slds-text-heading_medium slds-m-right_medium">Sorted by Upgrade Potential: Top 10 Donors with High Scores</h2>
-            </div>
-            <div class="slds-grid slds-grid_vertical-align-center">
-              <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
-              <lightning-button label="Save" variant="neutral" onclick={handlePreviewSave} class="slds-m-right_x-small"></lightning-button>
-              <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close preview" onclick={handlePreviewClose}></lightning-button-icon>
-            </div>
+      <div class="slds-col slds-size_1-of-1 slds-p-horizontal_medium slds-m-bottom_medium">
+        <div class="slds-scoped-notification slds-media slds-media_center slds-theme_info" role="status">
+          <div class="slds-media__figure">
+            <lightning-icon icon-name="utility:arrowup" variant="inverse" size="small"></lightning-icon>
+          </div>
+          <div class="slds-media__body">
+            <p>Sorted by Upgrade Potential: Top 10 Donors with High Scores</p>
+          </div>
+          <div class="slds-media__figure slds-p-left_medium">
+            <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
+            <lightning-button label="Save" variant="neutral" onclick={handlePreviewSave} class="slds-m-right_x-small"></lightning-button>
+            <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close preview" onclick={handlePreviewClose}></lightning-button-icon>
           </div>
         </div>
       </div>
