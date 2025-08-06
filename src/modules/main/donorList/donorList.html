@@ -13,8 +13,8 @@
         </div>
 
         <!-- Global Search -->
-        <div class="slds-grid slds-grid_vertical-align-center slds-grow">
-          <div class="slds-form-element slds-m-left_large" style="width: 400px;">
+        <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-center slds-grow">
+          <div class="slds-form-element" style="width: 500px;">
             <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
               <lightning-icon icon-name="utility:search" size="x-small" class="slds-input__icon slds-input__icon_left"></lightning-icon>
               <input type="search" class="slds-input" placeholder="Search..." />
@@ -27,28 +27,29 @@
           <lightning-button-icon icon-name="utility:notification" variant="container" alternative-text="Notifications" class="slds-m-right_x-small"></lightning-button-icon>
           <lightning-button-icon icon-name="utility:help" variant="container" alternative-text="Help" class="slds-m-right_x-small"></lightning-button-icon>
           <lightning-button-icon icon-name="utility:settings" variant="container" alternative-text="Settings" class="slds-m-right_x-small"></lightning-button-icon>
-          <lightning-avatar size="small" src="" fallback-icon-name="utility:user" alternative-text="User"></lightning-avatar>
-          
-          <!-- View Toggle -->
-          <div class="slds-button-group slds-m-left_medium" role="group" aria-label="View Options">
-            <lightning-button-icon icon-name="utility:apps" variant="border" alternative-text="Grid View"></lightning-button-icon>
-            <lightning-button-icon icon-name="utility:list" variant="border-filled" alternative-text="List View"></lightning-button-icon>
+          <div class="agentforce-icon-container">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.534 12.7477H14.5432C14.1648 12.78 13.8278 12.8446 13.5371 12.9369C13.5371 12.9369 13.1125 13.0708 12.4617 13.1631C12.3094 13.1862 12.1155 13.1862 12.0094 13.1862H11.9309C11.8248 13.1862 11.6263 13.1769 11.4786 13.1539C10.8278 13.0477 10.4078 12.9 10.4078 12.9C10.1171 12.8077 9.78015 12.7385 9.40169 12.6969C7.32938 12.4846 6.434 13.2739 6.38323 13.4216C6.33246 13.5692 6.55861 15.4892 6.72477 15.7939C6.8863 16.0939 7.13554 16.2692 7.36169 16.3662C7.59246 16.4631 9.48938 16.6523 10.1217 16.5646C10.754 16.4769 10.8509 16.2646 11.0217 15.9416C11.1417 15.7108 11.4509 14.6677 11.6217 14.0539C11.6632 13.9339 11.6678 13.6939 11.9586 13.6754C12.2494 13.6985 12.254 13.9431 12.2909 14.0631C12.4571 14.6769 12.7478 15.7292 12.8632 15.96C13.0248 16.2877 13.1217 16.5 13.754 16.6016C14.3817 16.6985 16.2832 16.5462 16.514 16.4539C16.7448 16.3616 16.994 16.1908 17.1602 15.8908C17.3263 15.5908 17.5848 13.6754 17.5386 13.5277C17.4925 13.3754 16.6109 12.5723 14.534 12.7477Z" fill="#5C5C5C"/>
+              <path d="M21.0094 6.7154H21.014C20.4371 5.98155 19.754 5.33078 18.9971 4.77232C19.7817 4.63386 20.3771 3.95078 20.3771 3.12924C20.3771 2.20617 19.6294 1.45386 18.7017 1.45386C17.774 1.45386 17.0263 2.20155 17.0263 3.12924C17.0263 3.31386 17.0632 3.48924 17.1186 3.6554C15.9278 3.09232 14.6263 2.72309 13.2648 2.58001C10.9848 2.34001 8.78323 2.74617 6.8863 3.64155C6.93707 3.48001 6.974 3.30924 6.974 3.12924C6.974 2.20617 6.2263 1.45386 5.29861 1.45386C4.37092 1.45386 3.62323 2.20155 3.62323 3.12924C3.62323 3.95078 4.214 4.62924 4.98938 4.77232C2.83861 6.36001 1.33861 8.67232 0.997074 11.3539C0.678612 13.8323 1.38477 16.3154 2.99092 18.3462C4.80938 20.6446 7.634 22.1539 10.7355 22.4816C11.1694 22.5277 11.5986 22.5508 12.0232 22.5508C17.5571 22.5508 22.3478 18.7939 23.0032 13.7077C23.3217 11.2292 22.6155 8.74617 21.0094 6.7154ZM12.0094 19.6892H12.0048C7.84169 19.6846 4.454 16.9062 4.454 13.4908C4.454 12.4616 4.76784 11.4739 5.33554 10.5969C5.38631 10.9108 5.47861 11.1831 5.58015 11.3862C5.71861 11.6631 5.99554 11.8246 6.2863 11.8246C6.40169 11.8246 6.52169 11.8016 6.63246 11.7462C7.02477 11.5569 7.1863 11.0862 7.0063 10.6939C6.90938 10.4862 6.66015 9.79847 7.26477 9.27232C7.85092 9.80309 8.69092 10.4262 9.63707 10.7308C11.4002 11.2892 12.734 10.9616 12.7894 10.9477C13.0571 10.8785 13.2648 10.68 13.3478 10.4169C13.4309 10.1539 13.3709 9.8677 13.1909 9.66463C12.3002 8.64001 11.8755 7.89232 11.6909 7.44001C15.3002 7.92924 15.9925 10.8046 16.0202 10.9339C16.0986 11.3031 16.4263 11.5569 16.7909 11.5569C16.8463 11.5569 16.8971 11.5523 16.9525 11.5385C17.3817 11.4508 17.654 11.0308 17.5663 10.6016C17.4555 10.0662 17.1648 9.34155 16.6478 8.61694C18.4155 9.75232 19.5602 11.5154 19.5602 13.4954C19.5602 16.9108 16.1725 19.6892 12.0094 19.6892Z" fill="#5C5C5C"/>
+            </svg>
           </div>
+          
+
         </div>
       </div>
     </header>
 
     <!-- App Navigation -->
     <nav class="slds-col slds-size_1-of-1 app-navigation">
-      <div class="slds-grid slds-grid_align-spread slds-p-horizontal_medium" style="height: 100%;">
+      <div class="slds-grid slds-grid_align-spread" style="height: 100%;">
         
         <!-- App Name -->
-        <div class="slds-grid slds-grid_vertical-align-center">
+        <div class="slds-grid slds-grid_vertical-align-center slds-p-left_medium">
           <span class="slds-text-body_regular slds-text-color_default">Sales</span>
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="slds-tabs_default slds-grow slds-m-left_large">
+        <div class="slds-tabs_default slds-grow slds-m-left_large slds-p-right_medium">
           <ul class="slds-tabs_default__nav" role="tablist">
             <li class="slds-tabs_default__item" role="presentation">
               <a class="slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-selected="false">Home</a>
@@ -77,10 +78,7 @@
           </ul>
         </div>
 
-        <!-- Edit Button -->
-        <div class="slds-grid slds-grid_vertical-align-center">
-          <lightning-button label="Edit" variant="neutral"></lightning-button>
-        </div>
+
       </div>
     </nav>
 
@@ -186,7 +184,7 @@
             <p if:true={isFiltered}>Sorted by Upgrade Potential & Filtered to "Prefers In-person": {donorData.length} Donors</p>
           </div>
                       <div class="slds-media__figure slds-p-left_medium ask-popover-container">
-              <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
+                             <lightning-button label="Ask" variant="neutral" icon-name="utility:sparkles" icon-position="left" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
               <template if:true={isAskPopoverOpen}>
                 <section class="slds-popover" role="dialog">
                   <header class="slds-popover__header">
@@ -381,7 +379,7 @@
             <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Email Drafts for In-Person Donors</h1>
             <lightning-button-icon 
               icon-name="utility:close" 
-              variant="bare-inverse" 
+              variant="border-filled" 
               alternative-text="Close modal" 
               onclick={handleEmailDraftsModalClose}
               class="slds-modal__close">

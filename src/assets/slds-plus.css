@@ -24269,3 +24269,54 @@ a:hover [icon-name='utility:info'] .slds-icon-text-default, a:focus [icon-name='
   text-overflow:ellipsis;
   white-space:pre-line;
 }
+
+/* Force sparkles icon to be blue in Ask button */
+.ask-popover-container lightning-button .slds-icon {
+    fill: #0250D9 !important;
+}
+
+.ask-popover-container lightning-button svg {
+    fill: #0250D9 !important;
+}
+
+.ask-popover-container lightning-button svg path {
+    fill: #0250D9 !important;
+}
+
+.ask-popover-container lightning-button lightning-primitive-icon {
+    --slds-c-icon-color-foreground: #0250D9 !important;
+}
+
+.ask-popover-container lightning-button[icon-name="utility:sparkles"] lightning-primitive-icon {
+    color: #0250D9 !important;
+}
+
+/* Force all utility icons in header to be gray */
+lightning-button-icon[variant="container"] .slds-icon {
+    fill: #5C5C5C !important;
+}
+
+lightning-button-icon[variant="container"] svg {
+    fill: #5C5C5C !important;
+}
+
+lightning-button-icon[variant="container"] svg path {
+    fill: #5C5C5C !important;
+}
+
+lightning-button-icon[variant="container"] lightning-primitive-icon {
+    --slds-c-icon-color-foreground: #5C5C5C !important;
+    color: #5C5C5C !important;
+}
+
+lightning-button-icon[icon-name="utility:notification"] .slds-icon,
+lightning-button-icon[icon-name="utility:help"] .slds-icon,
+lightning-button-icon[icon-name="utility:settings"] .slds-icon {
+    fill: #5C5C5C !important;
+}
+
+lightning-button-icon[icon-name="utility:notification"] svg,
+lightning-button-icon[icon-name="utility:help"] svg,
+lightning-button-icon[icon-name="utility:settings"] svg {
+    fill: #5C5C5C !important;
+}
