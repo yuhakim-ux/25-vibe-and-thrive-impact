@@ -322,12 +322,13 @@
 .agentforce-messages-container {
     flex: 1;
     height: 100%;
-    padding: 16px;
+    padding: 24px 16px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 16px;
+    overflow-y: auto;
 }
 
 .agentforce-messages {
@@ -337,7 +338,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 24px;
+    gap: 16px;
 }
 
 /* AI Message */
