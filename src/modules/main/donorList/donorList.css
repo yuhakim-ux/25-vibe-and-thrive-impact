@@ -338,11 +338,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-}
-
-.agentforce-ai-message,
-.agentforce-user-message-container {
-    margin-bottom: 24px;
+    gap: 24px;
 }
 
 /* AI Message */
