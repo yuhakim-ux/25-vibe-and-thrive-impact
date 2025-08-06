@@ -382,6 +382,15 @@
     word-wrap: break-word;
 }
 
+.agentforce-message-text a {
+    color: #0176d3;
+    text-decoration: none;
+}
+
+.agentforce-message-text a:hover {
+    text-decoration: underline;
+}
+
 .agentforce-message-actions {
     width: 100%;
     display: flex;
