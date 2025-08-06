@@ -489,7 +489,7 @@ export default class DonorList extends LightningElement {
     showAIMessage() {
         const aiMessage = {
             id: 'ai-message-1',
-            content: `I found a few upcoming Exclusive Events that the 8 donors might be interested in, based on their current locations and preference for in-person experiences.<br/><br/>Would you like me to draft email invitations for them accordingly?<br/><br/>Gala Night for Community Impact – October 12, 2024 – San Francisco, CA<br/>Innovators' Roundtable: Shaping the Future – October 25, 2024 – Palo Alto, CA<br/>Private Art Exhibit & Reception – November 3, 2024 – New York, NY<br/>Sustainable Futures Summit – November 7, 2024 – Seattle, WA`,
+            content: `I found a few upcoming Exclusive Events that the 8 donors might be interested in, based on their current locations and preference for in-person experiences.<br/><br/>Would you like me to draft email invitations for them accordingly?<br/><br/>1. [Gala Night for Community Impact] — October 12, 2024 – San Francisco, CA<br/>2. [Innovators' Roundtable: Shaping the Future] — October 25, 2024 – Palo Alto, CA<br/>3. [Private Art Exhibit & Reception] — November 3, 2024 – New York, NY<br/>4. [Sustainable Futures Summit] — November 7, 2024 – Seattle, WA`,
             isAI: true,
             isTyping: false,
             cssClass: 'chat-message ai-message'
