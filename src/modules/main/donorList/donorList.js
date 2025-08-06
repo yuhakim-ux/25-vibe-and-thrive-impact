@@ -492,6 +492,7 @@ export default class DonorList extends LightningElement {
             content: `I found a few upcoming Exclusive Events that the 8 donors might be interested in, based on their current locations and preference for in-person experiences.<br/><br/>Would you like me to draft email invitations for them accordingly?<br/><br/>1. <a href="#">[Gala Night for Community Impact]</a> — October 12, 2024 – San Francisco, CA<br/>2. <a href="#">[Innovators' Roundtable: Shaping the Future]</a> — October 25, 2024 – Palo Alto, CA<br/>3. <a href="#">[Private Art Exhibit & Reception]</a> — November 3, 2024 – New York, NY<br/>4. <a href="#">[Sustainable Futures Summit]</a> — November 7, 2024 – Seattle, WA`,
             isAI: true,
             isTyping: false,
+            buttonLabel: 'View More Events',
             cssClass: 'chat-message ai-message'
         };
         
@@ -556,11 +557,10 @@ export default class DonorList extends LightningElement {
         setTimeout(() => {
             const aiResponse = {
                 id: `ai-response-${Date.now()}`,
-                content: `Great! I've drafted personalized emails for all 8 donors, including their names and recent interests based on their past activities.
-                
-                <br><br>Is there anything else I can help with?`,
+                content: `Great! I've drafted personalized emails for all 8 donors, including their names and recent interests based on their past activities.<br/><br/>Is there anything else I can help with?`,
                 isAI: true,
                 isTyping: false,
+                buttonLabel: 'View Draft Emails',
                 cssClass: 'chat-message ai-message'
             };
             

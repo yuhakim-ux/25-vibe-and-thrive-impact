@@ -306,7 +306,7 @@
                         <template if:false={message.isTyping}>
                           <div class="agentforce-message-text" lwc:inner-html={message.content}></div>
                           <div class="agentforce-message-actions">
-                            <button class="agentforce-view-details-button">View More</button>
+                            <button class="agentforce-view-details-button">{message.buttonLabel}</button>
                             <div class="agentforce-message-buttons">
                               <div class="agentforce-message-action-icon"></div>
                               <div class="agentforce-message-action-icon"></div>
