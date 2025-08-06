@@ -1,0 +1,158 @@
+/* Donor List Component Styles */
+
+:host {
+    display: block;
+    font-family: var(--slds-g-font-family-text);
+}
+
+/* Global Header Styling */
+.global-header {
+    background: var(--slds-g-color-neutral-base-100);
+    border-bottom: 1px solid var(--slds-g-color-border-base-4);
+    height: 64px;
+}
+
+
+
+/* App Navigation Styling */
+.app-navigation {
+    background: var(--slds-g-color-neutral-base-100);
+    border-bottom: 1px solid var(--slds-g-color-border-base-4);
+    height: 40px;
+}
+
+/* Page Header Object Icon */
+.object-icon-container {
+    background: #5867E8;
+    border-radius: 4px;
+}
+
+/* Data Table Container */
+.data-table-container {
+    background: var(--slds-g-color-neutral-base-100);
+    border-radius: 4px;
+    box-shadow: var(--slds-g-shadow-1);
+}
+
+/* Utility Bar */
+.utility-bar {
+    background: var(--slds-g-color-neutral-base-95);
+    border-top: 1px solid var(--slds-g-color-border-base-4);
+    height: 40px;
+}
+
+.slds-popover {
+    z-index: 9000 !important;
+}
+
+.ai-assistant-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+}
+
+/* AI Assistant Float */
+.ai-assistant-float {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #90D0FE 0%, #F8ABE6 47%, #F9F1F1 100%);
+    border: 1px solid white;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-assistant-float:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ai-assistant-float:active {
+    transform: scale(0.95);
+}
+
+.slds-button_stretch {
+    width: 100%;
+}
+
+
+/* Main Container */
+.donor-list-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background: var(--slds-g-color-neutral-base-100);
+    box-shadow: 0px 2px 2px 0px rgba(22, 50, 92, 0.07);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.data-table-container {
+    height: 100%;
+}
+
+/* Custom scrollbar for data table */
+.data-table-container ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.data-table-container ::-webkit-scrollbar-track {
+    background: var(--slds-g-color-neutral-base-95);
+    border-radius: 4px;
+}
+
+.data-table-container ::-webkit-scrollbar-thumb {
+    background: var(--slds-g-color-neutral-base-80);
+    border-radius: 4px;
+}
+
+.data-table-container ::-webkit-scrollbar-thumb:hover {
+    background: var(--slds-g-color-neutral-base-70);
+}
+
+/* Enhanced focus states for accessibility */
+.slds-input:focus,
+.slds-button:focus,
+.slds-button-icon:focus {
+    box-shadow: var(--slds-g-shadow-focus-1);
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1440px) {
+    .donor-list-container {
+        width: 100%;
+        max-width: 1440px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .object-icon-container {
+        border: 2px solid var(--slds-g-color-border-base-1);
+    }
+    
+    .ai-assistant-float {
+        border: 2px solid var(--slds-g-color-border-base-1);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-float {
+        transition: none;
+    }
+}

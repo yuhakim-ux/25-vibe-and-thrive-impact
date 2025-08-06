@@ -1,0 +1,202 @@
+<template>
+  <div class="donor-list-container">
+    
+    <!-- Global Header -->
+    <header class="slds-col slds-size_1-of-1 global-header">
+      <div class="slds-grid slds-grid_align-spread slds-p-horizontal_medium slds-p-vertical_x-small" style="height: 100%;">
+        
+        <!-- Logo -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+          <svg width="46" height="32" viewBox="0 0 61 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M25.524 4.65374C27.5144 2.6759 30.2073 1.39612 33.2514 1.39612C37.2322 1.39612 40.7447 3.60665 42.618 6.86427C44.2572 6.1662 46.0134 5.70083 47.8868 5.70083C55.1459 5.70083 61 11.518 61 18.7313C61 25.9446 55.1459 31.7618 47.8868 31.7618C46.9501 31.7618 46.1305 31.6454 45.3109 31.5291C43.6718 34.4377 40.5106 36.4155 36.881 36.4155C35.3589 36.4155 33.9539 36.0665 32.666 35.4848C31.0269 39.3241 27.1631 42 22.5969 42C17.9136 42 13.8157 39.0914 12.2937 34.903C11.5912 35.0194 10.8887 35.1357 10.1862 35.1357C4.56622 35.1357 0 30.5983 0 25.0139C0 21.2909 1.9904 18.0332 5.03455 16.2881C4.44914 14.892 4.09789 13.2632 4.09789 11.6343C4.09789 5.23546 9.3666 0 15.9232 0C20.0211 0.116343 23.4165 1.8615 25.524 4.65374Z" fill="#00A1E0"/>
+          </svg>
+        </div>
+
+        <!-- Global Search -->
+        <div class="slds-grid slds-grid_vertical-align-center slds-grow">
+          <div class="slds-form-element slds-m-left_large" style="width: 400px;">
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+              <lightning-icon icon-name="utility:search" size="x-small" class="slds-input__icon slds-input__icon_left"></lightning-icon>
+              <input type="search" class="slds-input" placeholder="Search..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- Utility Icons -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+          <lightning-button-icon icon-name="utility:notification" variant="container" alternative-text="Notifications" class="slds-m-right_x-small"></lightning-button-icon>
+          <lightning-button-icon icon-name="utility:help" variant="container" alternative-text="Help" class="slds-m-right_x-small"></lightning-button-icon>
+          <lightning-button-icon icon-name="utility:settings" variant="container" alternative-text="Settings" class="slds-m-right_x-small"></lightning-button-icon>
+          <lightning-avatar size="small" src="" fallback-icon-name="utility:user" alternative-text="User"></lightning-avatar>
+          
+          <!-- View Toggle -->
+          <div class="slds-button-group slds-m-left_medium" role="group" aria-label="View Options">
+            <lightning-button-icon icon-name="utility:apps" variant="border" alternative-text="Grid View"></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:list" variant="border-filled" alternative-text="List View"></lightning-button-icon>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Navigation -->
+    <nav class="slds-col slds-size_1-of-1 app-navigation">
+      <div class="slds-grid slds-grid_align-spread slds-p-horizontal_medium" style="height: 100%;">
+        
+        <!-- App Name -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+          <span class="slds-text-body_regular slds-text-color_default">Sales</span>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="slds-tabs_default slds-grow slds-m-left_large">
+          <ul class="slds-tabs_default__nav" role="tablist">
+            <li class="slds-tabs_default__item" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-selected="false">Home</a>
+            </li>
+            <li class="slds-tabs_default__item" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false">Contacts</a>
+            </li>
+            <li class="slds-tabs_default__item slds-is-active" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="true">Accounts</a>
+            </li>
+            <li class="slds-tabs_default__item" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false">Service</a>
+            </li>
+            <li class="slds-tabs_default__item" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false">Sales</a>
+            </li>
+            <li class="slds-tabs_default__item" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false">Calendar</a>
+            </li>
+            <li class="slds-tabs_default__item" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false">Dashboards</a>
+            </li>
+            <li class="slds-tabs_default__item" role="presentation">
+              <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false">Reports</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Edit Button -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+          <lightning-button label="Edit" variant="neutral"></lightning-button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="slds-col slds-size_1-of-1 slds-p-around_medium">
+      <div class="slds-page-header">
+        <div class="slds-grid slds-grid_align-spread">
+          
+          <!-- Object Info -->
+          <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-icon_container slds-icon-standard-account slds-m-right_small object-icon-container">
+              <lightning-icon icon-name="standard:account" size="medium" variant="inverse"></lightning-icon>
+            </div>
+            <div>
+              <p class="slds-text-body_small slds-text-color_weak">Accounts</p>
+              <div class="slds-grid slds-grid_vertical-align-center">
+                <h1 class="slds-text-heading_large">All Accounts</h1>
+                <!-- AI Assistant Container -->
+                <div class="ai-assistant-container">
+                  <!-- AI Assistant Float -->
+                  <div class="ai-assistant-float" onclick={handleAIAssistantClick} onkeydown={handleAIAssistantKeydown} role="button" tabindex="0" aria-label="AI Assistant - Get fundraising insights">
+                    <svg width="14" height="14" viewBox="9 9 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22.1815 16.4523L19.5673 17.7581C18.7811 18.1484 18.1485 18.7865 17.7554 19.57L16.4496 22.1815C16.2638 22.5531 15.7308 22.5531 15.545 22.1815L14.2392 19.57C13.8488 18.7865 13.2108 18.1511 12.4273 17.7581L9.81845 16.4523C9.44691 16.2665 9.44691 15.7334 9.81845 15.5477L12.4327 14.2419C13.2188 13.8515 13.8515 13.2134 14.2446 12.43L15.5477 9.81845C15.7334 9.44691 16.2665 9.44691 16.4523 9.81845L17.7581 12.43C18.1484 13.2134 18.7865 13.8488 19.57 14.2419L22.1842 15.5477C22.5558 15.7334 22.5558 16.2665 22.1842 16.4523H22.1815Z" fill="#0250D9"/>
+                    </svg>
+                  </div>
+                  <!-- AI Popover -->
+                  <template if:true={isPopoverOpen}>
+                    <section class="slds-popover slds-nubbin_top" role="dialog" aria-label="AI Suggestions" aria-modal="true" style="position: absolute; top: 45px; left: 50%; transform: translateX(-50%); width: 320px; z-index: 1;">
+                      <div class="slds-popover__header slds-p-vertical_small slds-p-horizontal_medium">
+                        <div class="slds-media slds-media_center">
+                          <div class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-utility-sparkle">
+                              <lightning-icon icon-name="utility:sparkle" size="x-small"></lightning-icon>
+                            </span>
+                          </div>
+                          <div class="slds-media__body">
+                            <h2 class="slds-text-heading_small">Let me help you...</h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-popover__body slds-p-vertical_large slds-p-horizontal_medium">
+                        <lightning-button label="Sort by “Upgrade Potential”" onclick={handleAIPredictiveSort} data-sort-type="upgradePotential" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
+                        <lightning-button label="Sort by “Churn Risk”" onclick={handleAIPredictiveSort} data-sort-type="churnRisk" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
+                        <lightning-button label="Sort by “Likelihood to Give Again”" onclick={handleAIPredictiveSort} data-sort-type="likelihoodToGive" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
+                        <lightning-button label="Filter by “Optimal Ask Range”" onclick={handleAIFilter} class="sds-button_stretch"></lightning-button>
+                      </div>
+                    </section>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="slds-grid slds-grid_vertical-align-center">
+            <lightning-button-group>
+              <lightning-button label="Edit" variant="neutral"></lightning-button>
+              <lightning-button label="Delete" variant="neutral"></lightning-button>
+              <lightning-button label="Clone" variant="neutral"></lightning-button>
+              <lightning-button-menu alternative-text="Show more actions" icon-size="x-small">
+                <lightning-menu-item value="action1" label="Action 1"></lightning-menu-item>
+                <lightning-menu-item value="action2" label="Action 2"></lightning-menu-item>
+              </lightning-button-menu>
+            </lightning-button-group>
+          </div>
+        </div>
+
+        <!-- Metadata and Search -->
+        <div class="slds-grid slds-grid_align-spread slds-m-top_small">
+          <div class="slds-grid slds-grid_vertical-align-center">
+            <p class="slds-text-body_small slds-text-color_weak">
+              20 items • Sorted by Account Name • Filtered by All Accounts • Updated a few seconds ago
+            </p>
+          </div>
+          
+          <div class="slds-grid slds-grid_vertical-align-center">
+            <!-- List Search -->
+            <div class="slds-form-element slds-m-right_small" style="width: 300px;">
+              <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                <lightning-icon icon-name="utility:search" size="x-small" class="slds-input__icon slds-input__icon_left"></lightning-icon>
+                <input type="search" class="slds-input" placeholder="Search..." />
+              </div>
+            </div>
+            
+            <!-- Filter/Sort Actions -->
+            <lightning-button-icon icon-name="utility:filterList" variant="border" alternative-text="Filter" class="slds-m-right_x-small"></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:sort" variant="border" alternative-text="Sort" class="slds-m-right_x-small"></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:refresh" variant="border" alternative-text="Refresh"></lightning-button-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="slds-col slds-size_1-of-1 slds-p-horizontal_medium main-content">
+      <div class="data-table-container slds-p-around_none">
+        <lightning-datatable
+          key-field="id"
+          data={donorData}
+          columns={columns}
+          onrowselection={handleRowSelection}
+          onsort={handleSort}
+          sorted-by={sortedBy}
+          sorted-direction={sortedDirection}
+          show-row-number-column
+          class="slds-table_bordered slds-table_col-bordered"
+        ></lightning-datatable>
+      </div>
+    </div>
+
+    <!-- Utility Bar -->
+    <footer class="slds-col slds-size_1-of-1 utility-bar">
+      <div class="slds-grid slds-grid_vertical-align-center slds-p-horizontal_medium" style="height: 100%;">
+        <lightning-icon icon-name="utility:task" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+        <span class="slds-text-body_small">To Do List</span>
+      </div>
+    </footer>
+  </div>
+</template>
