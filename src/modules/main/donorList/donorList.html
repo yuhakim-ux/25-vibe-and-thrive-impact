@@ -1,5 +1,8 @@
 <template>
   <div class={containerClass}>
+    <template if:true={showPreviewBar}>
+      <div class="blur-overlay"></div>
+    </template>
     
     <!-- Global Header -->
     <header class="slds-col slds-size_1-of-1 global-header">
@@ -108,7 +111,7 @@
                   </div>
                   <!-- AI Popover -->
                   <template if:true={isPopoverOpen}>
-                    <section class="slds-popover slds-nubbin_top" role="dialog" aria-label="AI Suggestions" aria-modal="true" style="position: absolute; top: 45px; left: 50%; transform: translateX(-50%); width: 320px; z-index: 1;">
+                    <section class="slds-popover slds-nubbin_top" role="dialog" aria-label="AI Suggestions" aria-modal="true" style="position: absolute; top: 45px; left: 50%; transform: translateX(-50%); width: 320px; z-index: 10;">
                       <div class="slds-popover__header slds-p-vertical_small slds-p-horizontal_medium">
                         <div class="slds-media slds-media_center">
                           <div class="slds-media__figure">
