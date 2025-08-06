@@ -68,6 +68,9 @@ export default class DonorList extends LightningElement {
     @track chatInputValue = '';
     @track isEmailDraftsModalOpen = false;
     @track emailDrafts = [];
+    @track isRefinementPopoverOpen = false;
+    @track currentRefinementDraftId = '';
+    @track refinementPrompt = '';
     columns = COLUMNS;
 
     get containerClass() {
@@ -76,6 +79,10 @@ export default class DonorList extends LightningElement {
 
     get isChatInputEmpty() {
         return !this.chatInputValue || this.chatInputValue.trim().length === 0;
+    }
+
+    get shouldShowRefinementPopover() {
+        return this.isRefinementPopoverOpen && this.currentRefinementDraftId;
     }
 
     connectedCallback() {
@@ -735,5 +742,148 @@ P.S. Light refreshments and networking reception will follow the main presentati
         
         // Close modal
         this.handleEmailDraftsModalClose();
+    }
+
+    // Email Refinement Methods
+    handleOpenRefinement(event) {
+        const draftId = event.target.dataset.draftId;
+        this.currentRefinementDraftId = draftId;
+        this.isRefinementPopoverOpen = true;
+        this.refinementPrompt = '';
+    }
+
+    handleCloseRefinement() {
+        this.isRefinementPopoverOpen = false;
+        this.currentRefinementDraftId = '';
+        this.refinementPrompt = '';
+    }
+
+    handleRefinementPromptChange(event) {
+        this.refinementPrompt = event.target.value;
+    }
+
+    handleRefinementOption(event) {
+        const option = event.target.dataset.option;
+        const draftId = this.currentRefinementDraftId;
+        
+        this.refineEmail(draftId, option);
+        this.handleCloseRefinement();
+    }
+
+    handleCustomRefinement() {
+        if (this.refinementPrompt.trim()) {
+            const draftId = this.currentRefinementDraftId;
+            this.refineEmail(draftId, 'custom', this.refinementPrompt);
+            this.handleCloseRefinement();
+        }
+    }
+
+    refineEmail(draftId, option, customPrompt = '') {
+        this.emailDrafts = this.emailDrafts.map(draft => {
+            if (draft.id === draftId) {
+                let refinedBody = draft.emailBody;
+                
+                switch (option) {
+                    case 'rephrase':
+                        refinedBody = this.rephraseEmail(draft.emailBody);
+                        break;
+                    case 'shorten':
+                        refinedBody = this.shortenEmail(draft.emailBody);
+                        break;
+                    case 'elaborate':
+                        refinedBody = this.elaborateEmail(draft.emailBody);
+                        break;
+                    case 'formal':
+                        refinedBody = this.makeFormalEmail(draft.emailBody);
+                        break;
+                    case 'casual':
+                        refinedBody = this.makeCasualEmail(draft.emailBody);
+                        break;
+                    case 'bulletize':
+                        refinedBody = this.bulletizeEmail(draft.emailBody);
+                        break;
+                    case 'summarize':
+                        refinedBody = this.summarizeEmail(draft.emailBody);
+                        break;
+                    case 'custom':
+                        refinedBody = this.customRefineEmail(draft.emailBody, customPrompt);
+                        break;
+                }
+                
+                return { ...draft, emailBody: refinedBody, isEdited: true };
+            }
+            return draft;
+        });
+    }
+
+    rephraseEmail(originalBody) {
+        // Simulate AI rephrasing
+        return originalBody.replace(/I wanted to personally invite you/g, 'I would be delighted to extend an invitation to you')
+                          .replace(/This intimate gathering/g, 'This exclusive assembly')
+                          .replace(/Would you be available/g, 'I hope you might consider joining us');
+    }
+
+    shortenEmail(originalBody) {
+        // Simulate AI shortening
+        const lines = originalBody.split('\n').filter(line => line.trim() !== '');
+        const shortened = lines.slice(0, Math.ceil(lines.length * 0.7)); // Keep 70% of lines
+        return shortened.join('\n');
+    }
+
+    elaborateEmail(originalBody) {
+        // Simulate AI elaboration
+        return originalBody.replace(/This intimate gathering brings together thought leaders/g, 
+            'This carefully curated intimate gathering brings together distinguished thought leaders, visionary innovators, and influential changemakers from across our community')
+            .replace(/Given your preference for in-person experiences/g, 
+            'Given your demonstrated preference for meaningful in-person experiences and your history of thoughtful engagement with our mission');
+    }
+
+    makeFormalEmail(originalBody) {
+        // Simulate making more formal
+        return originalBody.replace(/I wanted to/g, 'I would be honored to')
+                          .replace(/I'd be happy/g, 'I would be pleased')
+                          .replace(/Would you be available/g, 'Would you do us the honor of joining us');
+    }
+
+    makeCasualEmail(originalBody) {
+        // Simulate making more casual
+        return originalBody.replace(/I wanted to personally invite you/g, 'I\'d love to invite you')
+                          .replace(/This intimate gathering/g, 'This special get-together')
+                          .replace(/I would be honored/g, 'I\'d be thrilled');
+    }
+
+    bulletizeEmail(originalBody) {
+        // Convert key points to bullets
+        const sections = originalBody.split('\n\n');
+        let bulletized = sections[0] + '\n\n'; // Keep greeting
+        
+        bulletized += '• Exclusive event bringing together community leaders\n';
+        bulletized += '• Limited seating for intimate networking\n';
+        bulletized += '• Aligned with your interests and giving history\n';
+        bulletized += '• Alternative dates available if needed\n\n';
+        
+        bulletized += sections[sections.length - 1]; // Keep closing
+        return bulletized;
+    }
+
+    summarizeEmail(originalBody) {
+        // Create a concise summary
+        const donor = this.emailDrafts.find(d => d.id === this.currentRefinementDraftId);
+        return `Dear ${donor.donorName.includes(' ') ? donor.donorName.split(' ')[0] : donor.donorName},
+
+I'd like to invite you to an exclusive community event on ${donor.primaryEvent.date} in ${donor.primaryEvent.location}.
+
+Given your support and preference for in-person engagement, this intimate gathering would be perfect for you.
+
+Please let me know if you can join us.
+
+Best regards,
+[Your Name]`;
+    }
+
+    customRefineEmail(originalBody, prompt) {
+        // Simulate custom AI refinement based on prompt
+        console.log('Custom refinement prompt:', prompt);
+        return `${originalBody}\n\n[Email refined based on: "${prompt}"]`;
     }
 }

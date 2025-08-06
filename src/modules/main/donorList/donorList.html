@@ -430,9 +430,99 @@
                       <!-- Email Draft Column -->
                       <div class="slds-col slds-size_1-of-2">
                         <div class="slds-form-element">
-                          <label class="slds-form-element__label slds-text-title_caps" for={draft.id}>
-                            <strong>Email Draft</strong>
-                          </label>
+                          <div class="email-draft-header">
+                            <label class="slds-form-element__label slds-text-title_caps" for={draft.id}>
+                              <strong>Email Draft</strong>
+                            </label>
+                            <div class="refinement-icon-container">
+                              <lightning-button-icon 
+                                icon-name="utility:edit" 
+                                variant="bare" 
+                                alternative-text="Refine with AI" 
+                                onclick={handleOpenRefinement}
+                                data-draft-id={draft.id}
+                                size="x-small"
+                                class="refinement-edit-icon">
+                              </lightning-button-icon>
+                              
+                              <!-- Refinement Popover -->
+                              <template if:true={shouldShowRefinementPopover}>
+                                <div class="refinement-popover-container">
+                                        <div class="slds-popover slds-nubbin_top-left slds-popover_medium refinement-popover" role="dialog">
+                                          <!-- Popover Header -->
+                                          <div class="slds-popover__header">
+                                            <h2 class="slds-text-heading_small">Modify with a prompt</h2>
+                                            <lightning-button-icon 
+                                              icon-name="utility:close" 
+                                              variant="bare" 
+                                              alternative-text="Close" 
+                                              onclick={handleCloseRefinement}
+                                              size="x-small"
+                                              class="slds-float_right">
+                                            </lightning-button-icon>
+                                          </div>
+                                          
+                                          <!-- Popover Body -->
+                                          <div class="slds-popover__body">
+                                            <!-- Custom Prompt Input -->
+                                            <div class="slds-form-element slds-m-bottom_medium">
+                                              <textarea 
+                                                class="slds-textarea" 
+                                                placeholder="Describe how you'd like to modify this email..."
+                                                value={refinementPrompt}
+                                                onchange={handleRefinementPromptChange}
+                                                rows="3">
+                                              </textarea>
+                                            </div>
+                                            
+                                            <!-- Preset Options -->
+                                            <div class="refinement-options">
+                                              <div class="refinement-option" onclick={handleRefinementOption} data-option="rephrase">
+                                                <lightning-icon icon-name="utility:refresh" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <span>Rephrase</span>
+                                              </div>
+                                              <div class="refinement-option" onclick={handleRefinementOption} data-option="shorten">
+                                                <lightning-icon icon-name="utility:contract" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <span>Shorten</span>
+                                              </div>
+                                              <div class="refinement-option" onclick={handleRefinementOption} data-option="elaborate">
+                                                <lightning-icon icon-name="utility:expand" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <span>Elaborate</span>
+                                              </div>
+                                              <div class="refinement-option" onclick={handleRefinementOption} data-option="formal">
+                                                <lightning-icon icon-name="utility:user" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <span>More formal</span>
+                                              </div>
+                                              <div class="refinement-option" onclick={handleRefinementOption} data-option="casual">
+                                                <lightning-icon icon-name="utility:emoji" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <span>More casual</span>
+                                              </div>
+                                              <div class="refinement-option" onclick={handleRefinementOption} data-option="bulletize">
+                                                <lightning-icon icon-name="utility:list" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <span>Bulletize</span>
+                                              </div>
+                                              <div class="refinement-option" onclick={handleRefinementOption} data-option="summarize">
+                                                <lightning-icon icon-name="utility:summary" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <span>Summarize</span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          
+                                          <!-- Popover Footer -->
+                                          <div class="slds-popover__footer">
+                                            <lightning-button 
+                                              label="Apply Custom Prompt" 
+                                              variant="brand" 
+                                              onclick={handleCustomRefinement}
+                                              class="slds-m-right_x-small">
+                                            </lightning-button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
+                              </template>
+                            </div>
+                          </div>
                           <div class="slds-form-element__control">
                             <!-- Subject Line -->
                             <div class="slds-m-bottom_small">
