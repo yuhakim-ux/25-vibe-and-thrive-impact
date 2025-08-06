@@ -119,7 +119,7 @@ fundraisers. Follow these rules for implementation:
 - **Iterative Development**: "Start with a simple version, then enhance it step by step"
 - **Technical Implementation**: "Use Lightning Base Components first, then SLDS utilities"
 - **Error Resolution**: "Fix the [specific issue] while maintaining [specific requirement]"
-- **Success Criteria**: Instead of "optimize performance" → "reduce initial load time to under 2 seconds"
+- **Reference What Cursor Knows**: "Like the iPhone settings app - simple and organized"
 
 ---
 
