@@ -360,28 +360,10 @@
 .agentforce-ai-avatar {
     width: 32px;
     height: 32px;
-    background: #D6E6FF;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-}
-
-.agentforce-ai-avatar-icon {
-    width: 20px;
-    height: 20px;
-    position: relative;
-}
-
-.agentforce-ai-avatar-icon::before {
-    content: '';
-    position: absolute;
-    width: 18.46px;
-    height: 17.58px;
-    left: 0.77px;
-    top: 1.21px;
-    background: #0250D9;
+    flex-shrink: 0;
 }
 
 .agentforce-message-content {
