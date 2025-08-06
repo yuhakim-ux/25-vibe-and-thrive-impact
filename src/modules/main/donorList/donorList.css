@@ -342,11 +342,6 @@
 
 .agentforce-message {
     width: 100%;
-    margin-bottom: 24px;
-}
-
-.agentforce-message:last-child {
-    margin-bottom: 0;
 }
 
 /* AI Message */
@@ -356,6 +351,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 16px;
+    margin-bottom: 24px;
 }
 
 .agentforce-ai-avatar {
@@ -441,6 +437,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 16px;
+    margin-bottom: 24px;
 }
 
 .agentforce-user-avatar {
