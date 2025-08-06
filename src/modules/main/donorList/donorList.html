@@ -319,9 +319,19 @@
                   </template>
                   
                   <template if:false={message.isAI}>
-                    <div class="agentforce-user-message">
-                      <div class="agentforce-user-message-content">
-                        <div class="agentforce-user-message-text">{message.content}</div>
+                    <div class="agentforce-user-message-container">
+                      <div class="agentforce-user-avatar">
+                        <lightning-icon icon-name="standard:user" size="small" class="slds-avatar__icon"></lightning-icon>
+                      </div>
+                      <div class="agentforce-message-content">
+                        <div class="agentforce-message-text">{message.content}</div>
+                        <div class="agentforce-message-actions">
+                            <div class="agentforce-message-buttons">
+                              <div class="agentforce-message-action-icon"></div>
+                              <div class="agentforce-message-action-icon"></div>
+                              <div class="agentforce-message-action-icon"></div>
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </template>
