@@ -322,7 +322,6 @@ export default class DonorList extends LightningElement {
                 preferredContactMethod: contactMethod
             });
         }
-        ];
         
         // Store original data and set current data
         this.originalDonorData = [...data];
