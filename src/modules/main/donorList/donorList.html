@@ -182,7 +182,8 @@
             <lightning-icon icon-name="utility:arrowup" variant="inverse" size="small"></lightning-icon>
           </div>
           <div class="slds-media__body">
-            <p>Sorted by Upgrade Potential: Top 10 Donors with High Scores</p>
+            <p if:false={isFiltered}>Sorted by Upgrade Potential: Top 10 Donors with High Scores</p>
+            <p if:true={isFiltered}>Sorted by Upgrade Potential & Filtered to "Prefers In-person": {donorData.length} Donors</p>
           </div>
                       <div class="slds-media__figure slds-p-left_medium ask-popover-container">
               <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
@@ -197,8 +198,14 @@
                   <div class="slds-popover__body">
                     <lightning-textarea name="ask" label="Tell me what you need!"></lightning-textarea>
                     <div class="slds-m-top_medium">
-                      <lightning-button label="Filter further to 'Prefers in-person'" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
-                      <lightning-button label="Flag for Board Member Outreach" class="slds-button_stretch"></lightning-button>
+                      <template if:false={isFiltered}>
+                        <lightning-button label="Filter further to 'Prefers in-person'" onclick={handleFilterInPerson} class="slds-button_stretch slds-m-bottom_small"></lightning-button>
+                        <lightning-button label="Flag for Board Member Outreach" class="slds-button_stretch"></lightning-button>
+                      </template>
+                      <template if:true={isFiltered}>
+                        <lightning-button label="Invite All to Exclusive Event" onclick={handleInviteToEvent} class="slds-button_stretch slds-m-bottom_small"></lightning-button>
+                        <lightning-button label="Assign to Major Gift Officer" onclick={handleAssignToMGO} class="slds-button_stretch"></lightning-button>
+                      </template>
                     </div>
                   </div>
                   <footer class="slds-popover__footer slds-text-align_right">

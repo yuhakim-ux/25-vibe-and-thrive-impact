@@ -61,6 +61,8 @@ export default class DonorList extends LightningElement {
     @track isPopoverOpen = false;
     @track showPreviewBar = false;
     @track isAskPopoverOpen = false;
+    @track isFiltered = false;
+    @track filterType = '';
     columns = COLUMNS;
 
     get containerClass() {
@@ -82,7 +84,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 75000,
                 engagementScore: 88,
                 lifetimeGiving: 450000,
-                primaryContact: 'Eleanor Vance'
+                primaryContact: 'Eleanor Vance',
+                preferredContactMethod: 'Email'
             },
             {
                 id: '2',
@@ -92,7 +95,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 5000,
                 engagementScore: 72,
                 lifetimeGiving: 25000,
-                primaryContact: 'John Smith'
+                primaryContact: 'John Smith',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '3',
@@ -102,7 +106,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 150000,
                 engagementScore: 95,
                 lifetimeGiving: 1200000,
-                primaryContact: 'Marcus Holloway'
+                primaryContact: 'Marcus Holloway',
+                preferredContactMethod: 'Phone'
             },
             {
                 id: '4',
@@ -112,7 +117,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 60000,
                 engagementScore: 65,
                 lifetimeGiving: 275000,
-                primaryContact: 'Susan Richards'
+                primaryContact: 'Susan Richards',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '5',
@@ -122,7 +128,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 25000,
                 engagementScore: 81,
                 lifetimeGiving: 150000,
-                primaryContact: 'David Chen'
+                primaryContact: 'David Chen',
+                preferredContactMethod: 'Email'
             },
             {
                 id: '6',
@@ -132,7 +139,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 100000,
                 engagementScore: 92,
                 lifetimeGiving: 850000,
-                primaryContact: 'Olivia Martinez'
+                primaryContact: 'Olivia Martinez',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '7',
@@ -142,7 +150,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 10000,
                 engagementScore: 78,
                 lifetimeGiving: 85000,
-                primaryContact: 'Evelyn Reed'
+                primaryContact: 'Evelyn Reed',
+                preferredContactMethod: 'Phone'
             },
             {
                 id: '8',
@@ -152,7 +161,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 35000,
                 engagementScore: 60,
                 lifetimeGiving: 120000,
-                primaryContact: 'Liam Gallagher'
+                primaryContact: 'Liam Gallagher',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '9',
@@ -162,7 +172,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 250000,
                 engagementScore: 98,
                 lifetimeGiving: 2500000,
-                primaryContact: 'Arthur Pendelton'
+                primaryContact: 'Arthur Pendelton',
+                preferredContactMethod: 'Email'
             },
             {
                 id: '10',
@@ -172,7 +183,8 @@ export default class DonorList extends LightningElement {
                 nextAskAmount: 125000,
                 engagementScore: 85,
                 lifetimeGiving: 950000,
-                primaryContact: 'Fatima Rossi'
+                primaryContact: 'Fatima Rossi',
+                preferredContactMethod: 'In-person'
             },
             {
                 id: '11',
@@ -356,6 +368,9 @@ export default class DonorList extends LightningElement {
         this.donorData = [...this.originalDonorData];
         this.sortedBy = 'donorName';
         this.sortedDirection = 'asc';
+        this.isFiltered = false;
+        this.filterType = '';
+        this.isAskPopoverOpen = false;
     }
 
     handlePreviewAsk() {
@@ -364,6 +379,32 @@ export default class DonorList extends LightningElement {
 
     handleAskPopoverClose() {
         this.isAskPopoverOpen = false;
+    }
+
+    handleFilterInPerson() {
+        // Filter donors to only show those who prefer in-person contact
+        const filteredDonors = this.donorData.filter(donor => 
+            donor.preferredContactMethod === 'In-person'
+        );
+        
+        this.donorData = filteredDonors;
+        this.isFiltered = true;
+        this.filterType = 'in-person';
+        this.isAskPopoverOpen = false;
+        
+        console.log('Filtered to in-person preferred donors:', filteredDonors.length, 'donors');
+    }
+
+    handleInviteToEvent() {
+        console.log('Invite All to Exclusive Event action triggered');
+        this.isAskPopoverOpen = false;
+        // Placeholder for event invitation functionality
+    }
+
+    handleAssignToMGO() {
+        console.log('Assign to Major Gift Officer action triggered');
+        this.isAskPopoverOpen = false;
+        // Placeholder for MGO assignment functionality
     }
 
     handlePreviewSave() {
