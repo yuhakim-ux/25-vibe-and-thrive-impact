@@ -1,6 +1,6 @@
 # Design Reflection: AI-Powered Salesforce Donor List Prototype
 
-*A comprehensive guide to building interactive Salesforce Lightning prototypes with AI assistance (prototype.. not REAL AI)*
+*A comprehensive guide to building interactive Salesforce Lightning prototypes with AI assistance*
 
 ---
 
