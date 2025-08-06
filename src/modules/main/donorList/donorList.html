@@ -248,86 +248,101 @@
     <!-- Agentforce Panel -->
     <template if:true={isAgentforcePanelOpen}>
       <div class="agentforce-panel">
+        <!-- Header -->
         <div class="agentforce-header">
-          <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-p-around_medium">
-            <div class="slds-grid slds-grid_vertical-align-center">
-              <lightning-icon icon-name="utility:einstein" size="small" class="slds-m-right_small"></lightning-icon>
-              <h2 class="slds-text-heading_medium slds-text-color_default">Agentforce</h2>
-              <span class="slds-badge slds-badge_lightest slds-m-left_small">
-                <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
-                1
-              </span>
+          <div class="agentforce-header-content">
+            <div class="agentforce-title-section">
+              <h2 class="agentforce-title">Agentforce</h2>
+              <div class="agentforce-status-badge"></div>
             </div>
-            <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close Agentforce panel" onclick={handleAgentforceClose} size="medium"></lightning-button-icon>
+            <div class="agentforce-header-actions">
+              <div class="agentforce-action-icon"></div>
+              <div class="agentforce-action-icon"></div>
+              <lightning-button-icon 
+                icon-name="utility:close" 
+                variant="bare" 
+                alternative-text="Close Agentforce panel" 
+                onclick={handleAgentforceClose} 
+                size="small"
+                class="agentforce-close-button">
+              </lightning-button-icon>
+            </div>
           </div>
         </div>
         
+        <!-- Chat Container -->
         <div class="agentforce-chat-container">
-          <!-- Chat Messages -->
-          <div class="agentforce-messages slds-p-around_medium">
-            <template for:each={chatMessages} for:item="message">
-              <div key={message.id} class={message.cssClass}>
-                <template if:true={message.isAI}>
-                  <div class="slds-grid slds-grid_align-start slds-m-bottom_medium">
-                    <div class="slds-avatar slds-avatar_circle slds-avatar_small slds-m-right_small" style="background: linear-gradient(45deg, #1B96FF, #9747FF);">
-                      <lightning-icon icon-name="utility:einstein" size="x-small" variant="inverse"></lightning-icon>
-                    </div>
-                    <div class="slds-chat-message slds-chat-message_inbound">
-                      <div class="slds-chat-message__body">
-                        <div class="slds-chat-message__text slds-chat-message__text_inbound">
-                          <template if:true={message.isTyping}>
-                            <div class="typing-indicator">
-                              <span class="typing-dot"></span>
-                              <span class="typing-dot"></span>
-                              <span class="typing-dot"></span>
-                            </div>
-                          </template>
-                          <template if:false={message.isTyping}>
-                            <div class="slds-text-body_regular" lwc:inner-html={message.content}></div>
-                          </template>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </template>
-                
-                <template if:false={message.isAI}>
-                  <div class="slds-grid slds-grid_align-end slds-m-bottom_medium">
-                    <div class="slds-chat-message slds-chat-message_outbound">
-                      <div class="slds-chat-message__body">
-                        <div class="slds-chat-message__text slds-chat-message__text_outbound">
-                          <div class="slds-text-body_regular">{message.content}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </template>
-              </div>
-            </template>
+          <!-- Expand Button -->
+          <div class="agentforce-expand-section">
+            <div class="agentforce-expand-button">
+              <div class="agentforce-expand-icon"></div>
+            </div>
           </div>
           
-          <!-- Chat Input -->
-          <div class="agentforce-input slds-p-around_medium slds-border_top">
-            <div class="slds-grid slds-grid_vertical-align-end">
-              <div class="slds-grow">
-                <lightning-textarea 
-                  name="chatInput" 
-                  placeholder="Describe your task or ask a question..." 
-                  value={chatInputValue}
-                  onchange={handleChatInputChange}
-                  onkeydown={handleChatInputKeydown}
-                  class="slds-textarea_bare">
-                </lightning-textarea>
-              </div>
-              <div class="slds-m-left_small">
-                <lightning-button-icon 
-                  icon-name="utility:send" 
-                  variant="brand" 
-                  alternative-text="Send message" 
+          <!-- Messages -->
+          <div class="agentforce-messages-container">
+            <div class="agentforce-messages">
+              <template for:each={chatMessages} for:item="message">
+                <div key={message.id} class="agentforce-message">
+                  <template if:true={message.isAI}>
+                    <div class="agentforce-ai-message">
+                      <div class="agentforce-ai-avatar">
+                        <div class="agentforce-ai-avatar-icon"></div>
+                      </div>
+                      <div class="agentforce-message-content">
+                        <template if:true={message.isTyping}>
+                          <div class="typing-indicator">
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                          </div>
+                        </template>
+                        <template if:false={message.isTyping}>
+                          <div class="agentforce-message-text" lwc:inner-html={message.content}></div>
+                          <div class="agentforce-message-actions">
+                            <button class="agentforce-view-details-button">View Details</button>
+                            <div class="agentforce-message-buttons">
+                              <div class="agentforce-message-action-icon"></div>
+                              <div class="agentforce-message-action-icon"></div>
+                              <div class="agentforce-message-action-icon"></div>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+                  
+                  <template if:false={message.isAI}>
+                    <div class="agentforce-user-message">
+                      <div class="agentforce-user-message-content">
+                        <div class="agentforce-user-message-text">{message.content}</div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Input Section -->
+        <div class="agentforce-input-section">
+          <div class="agentforce-input-container">
+            <div class="agentforce-input-field">
+              <textarea 
+                placeholder="Describe your task or ask a question…" 
+                value={chatInputValue}
+                onchange={handleChatInputChange}
+                onkeydown={handleChatInputKeydown}
+                class="agentforce-textarea">
+              </textarea>
+              <div class="agentforce-send-button-container">
+                <button 
                   onclick={handleSendMessage}
                   disabled={isChatInputEmpty}
-                  size="medium">
-                </lightning-button-icon>
+                  class="agentforce-send-button">
+                  <div class="agentforce-send-icon"></div>
+                </button>
               </div>
             </div>
           </div>
