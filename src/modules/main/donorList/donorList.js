@@ -66,6 +66,8 @@ export default class DonorList extends LightningElement {
     @track isAgentforcePanelOpen = false;
     @track chatMessages = [];
     @track chatInputValue = '';
+    @track isEmailDraftsModalOpen = false;
+    @track emailDrafts = [];
     columns = COLUMNS;
 
     get containerClass() {
@@ -568,5 +570,170 @@ export default class DonorList extends LightningElement {
             const messagesWithoutTyping = this.chatMessages.filter(msg => !msg.isTyping);
             this.chatMessages = [...messagesWithoutTyping, aiResponse];
         }, 1500);
+    }
+
+    // Email Drafts Modal Methods
+    handleViewDraftEmails(event) {
+        const buttonType = event.target.dataset.buttonType;
+        
+        if (buttonType === 'View Draft Emails') {
+            this.generateEmailDrafts();
+            this.isEmailDraftsModalOpen = true;
+        } else {
+            // Handle other button types (like "View More Events")
+            console.log('Button clicked:', buttonType);
+        }
+    }
+
+    handleEmailDraftsModalClose() {
+        this.isEmailDraftsModalOpen = false;
+        this.emailDrafts = [];
+    }
+
+    generateEmailDrafts() {
+        // Get the 8 in-person donors from current filtered data
+        const inPersonDonors = this.donorData.filter(donor => 
+            donor.preferredContactMethod === 'In-person'
+        ).slice(0, 8);
+
+        this.emailDrafts = inPersonDonors.map((donor, index) => {
+            const events = [
+                {
+                    name: 'Gala Night for Community Impact',
+                    date: 'October 12, 2024',
+                    location: 'San Francisco, CA'
+                },
+                {
+                    name: 'Innovators\' Roundtable: Shaping the Future',
+                    date: 'October 25, 2024',
+                    location: 'Palo Alto, CA'
+                },
+                {
+                    name: 'Private Art Exhibit & Reception',
+                    date: 'November 3, 2024',
+                    location: 'New York, NY'
+                },
+                {
+                    name: 'Sustainable Futures Summit',
+                    date: 'November 7, 2024',
+                    location: 'Seattle, WA'
+                }
+            ];
+
+            // Select primary event based on donor location/preference
+            const primaryEvent = events[index % events.length];
+            const secondaryEvent = events[(index + 1) % events.length];
+
+            return {
+                id: donor.id,
+                donorName: donor.donorName,
+                donorType: donor.donorType,
+                lifetimeGiving: donor.lifetimeGiving,
+                lastGiftDate: donor.lastGiftDate,
+                engagementScore: donor.engagementScore,
+                subject: `Exclusive Invitation: ${primaryEvent.name}`,
+                emailBody: this.generatePersonalizedEmailBody(donor, primaryEvent, secondaryEvent),
+                aiExplanation: this.generateAIExplanation(donor, primaryEvent),
+                primaryEvent: primaryEvent,
+                secondaryEvent: secondaryEvent,
+                isEdited: false
+            };
+        });
+    }
+
+    generatePersonalizedEmailBody(donor, primaryEvent, secondaryEvent) {
+        const greeting = donor.donorType === 'Individual' ? 
+            `Dear ${donor.donorName}` : 
+            `Dear ${donor.primaryContact}`;
+        
+        const giftHistory = donor.lifetimeGiving > 500000 ? 'major supporter' : 'valued partner';
+        const engagementLevel = donor.engagementScore > 85 ? 'deeply engaged' : 'committed';
+
+        return `${greeting},
+
+As one of our ${giftHistory} and a ${engagementLevel} member of our community, I wanted to personally invite you to an exclusive event that I believe will be of great interest to you.
+
+${primaryEvent.name}
+${primaryEvent.date} | ${primaryEvent.location}
+
+This intimate gathering brings together thought leaders, innovators, and changemakers like yourself to discuss the future of our shared mission. Given your preference for in-person experiences and your track record of meaningful engagement, I believe this event would provide valuable networking opportunities and insights aligned with your interests.
+
+We have limited seating for this exclusive event, and I would be honored to reserve a spot for you. If the date doesn't work, we also have ${secondaryEvent.name} on ${secondaryEvent.date} in ${secondaryEvent.location}.
+
+Would you be available to join us? I'd be happy to discuss the details personally at your convenience.
+
+With gratitude,
+[Your Name]
+Development Director
+
+P.S. Light refreshments and networking reception will follow the main presentation.`;
+    }
+
+    generateAIExplanation(donor, primaryEvent) {
+        const explanations = [];
+        
+        if (donor.preferredContactMethod === 'In-person') {
+            explanations.push('• **In-person preference**: Highlighted exclusive, intimate nature of the event since this donor prefers face-to-face interactions.');
+        }
+        
+        if (donor.lifetimeGiving > 500000) {
+            explanations.push('• **Major donor recognition**: Addressed as "major supporter" due to lifetime giving of $' + donor.lifetimeGiving.toLocaleString() + '.');
+        } else {
+            explanations.push('• **Valued partner tone**: Used "valued partner" language appropriate for their $' + donor.lifetimeGiving.toLocaleString() + ' giving history.');
+        }
+        
+        if (donor.engagementScore > 85) {
+            explanations.push('• **High engagement**: Described as "deeply engaged" reflecting their ' + donor.engagementScore + ' engagement score.');
+        } else {
+            explanations.push('• **Committed supporter**: Acknowledged as "committed" member based on their ' + donor.engagementScore + ' engagement score.');
+        }
+        
+        explanations.push('• **Event selection**: Chose ' + primaryEvent.name + ' in ' + primaryEvent.location + ' based on geographic proximity and donor profile.');
+        
+        explanations.push('• **Personal touch**: Included personal signature and phone call offer to maintain relationship warmth.');
+        
+        return explanations.join('\n');
+    }
+
+    handleEmailEdit(event) {
+        const draftId = event.target.dataset.draftId;
+        const newContent = event.target.value;
+        
+        this.emailDrafts = this.emailDrafts.map(draft => {
+            if (draft.id === draftId) {
+                return { ...draft, emailBody: newContent, isEdited: true };
+            }
+            return draft;
+        });
+    }
+
+    handleSendEmail(event) {
+        const draftId = event.target.dataset.draftId;
+        const draft = this.emailDrafts.find(d => d.id === draftId);
+        
+        if (draft) {
+            // Simulate sending email
+            console.log('Sending email to:', draft.donorName);
+            console.log('Subject:', draft.subject);
+            console.log('Body:', draft.emailBody);
+            
+            // Show success message (in a real app, this would be a toast)
+            alert(`Email sent successfully to ${draft.donorName}!`);
+        }
+    }
+
+    handleSendAllEmails() {
+        // Simulate sending all emails
+        this.emailDrafts.forEach(draft => {
+            console.log('Sending email to:', draft.donorName);
+            console.log('Subject:', draft.subject);
+            console.log('Body:', draft.emailBody);
+        });
+        
+        // Show success message
+        alert(`All ${this.emailDrafts.length} emails sent successfully!`);
+        
+        // Close modal
+        this.handleEmailDraftsModalClose();
     }
 }

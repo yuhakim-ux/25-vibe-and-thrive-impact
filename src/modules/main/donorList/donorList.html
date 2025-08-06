@@ -306,7 +306,7 @@
                         <template if:false={message.isTyping}>
                           <div class="agentforce-message-text" lwc:inner-html={message.content}></div>
                           <div class="agentforce-message-actions">
-                            <button class="agentforce-view-details-button">{message.buttonLabel}</button>
+                            <button class="agentforce-view-details-button" onclick={handleViewDraftEmails} data-button-type={message.buttonLabel}>{message.buttonLabel}</button>
                             <div class="agentforce-message-buttons">
                               <div class="agentforce-message-action-icon"></div>
                               <div class="agentforce-message-action-icon"></div>
@@ -363,6 +363,135 @@
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Email Drafts Modal -->
+    <template if:true={isEmailDraftsModalOpen}>
+      <!-- Modal Backdrop -->
+      <div class="slds-backdrop slds-backdrop_open" onclick={handleEmailDraftsModalClose}></div>
+      
+      <!-- Modal Container -->
+      <div class="slds-modal slds-fade-in-open slds-modal_large" aria-hidden="false" role="dialog" aria-labelledby="modal-heading-01" aria-modal="true">
+        <div class="slds-modal__container">
+          <!-- Modal Header -->
+          <div class="slds-modal__header">
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Email Drafts for In-Person Donors</h1>
+            <lightning-button-icon 
+              icon-name="utility:close" 
+              variant="bare-inverse" 
+              alternative-text="Close modal" 
+              onclick={handleEmailDraftsModalClose}
+              class="slds-modal__close">
+            </lightning-button-icon>
+          </div>
+          
+          <!-- Modal Body -->
+          <div class="slds-modal__content slds-p-around_medium email-drafts-content">
+            <div class="slds-text-body_regular slds-m-bottom_medium">
+              <p><strong>8 personalized email invitations</strong> have been generated for your in-person preference donors. Each email is tailored based on their giving history, engagement level, and contact preferences.</p>
+            </div>
+            
+            <!-- Email Drafts List -->
+            <div class="email-drafts-list">
+              <template for:each={emailDrafts} for:item="draft">
+                <div key={draft.id} class="slds-card slds-m-bottom_medium email-draft-card">
+                  <!-- Donor Info Header -->
+                  <div class="slds-card__header">
+                    <div class="slds-media slds-media_center">
+                      <div class="slds-media__figure">
+                        <lightning-icon icon-name="standard:contact" size="small"></lightning-icon>
+                      </div>
+                      <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                          <span class="slds-text-heading_small">{draft.donorName}</span>
+                        </h2>
+                        <div class="slds-text-body_small slds-text-color_weak">
+                          {draft.donorType} • Lifetime Giving: ${draft.lifetimeGiving} • Engagement: {draft.engagementScore}/100
+                        </div>
+                      </div>
+                      <div class="slds-media__figure slds-media__figure_reverse">
+                        <lightning-button 
+                          label="Send Email" 
+                          variant="brand" 
+                          onclick={handleSendEmail}
+                          data-draft-id={draft.id}
+                          class="slds-m-left_x-small">
+                        </lightning-button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Email Content -->
+                  <div class="slds-card__body slds-card__body_inner">
+                    <div class="slds-grid slds-gutters">
+                      <!-- Email Draft Column -->
+                      <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-form-element">
+                          <label class="slds-form-element__label slds-text-title_caps" for={draft.id}>
+                            <strong>Email Draft</strong>
+                          </label>
+                          <div class="slds-form-element__control">
+                            <!-- Subject Line -->
+                            <div class="slds-m-bottom_small">
+                              <label class="slds-form-element__label slds-text-body_small">Subject:</label>
+                              <input type="text" class="slds-input email-subject" value={draft.subject} readonly />
+                            </div>
+                            <!-- Email Body -->
+                            <textarea 
+                              id={draft.id}
+                              class="slds-textarea email-body-textarea" 
+                              rows="12"
+                              onchange={handleEmailEdit}
+                              data-draft-id={draft.id}>{draft.emailBody}</textarea>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- AI Explanation Column -->
+                      <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-form-element">
+                          <label class="slds-form-element__label slds-text-title_caps">
+                            <strong>AI Personalization Insights</strong>
+                          </label>
+                          <div class="slds-box slds-theme_shade ai-explanation-box">
+                            <div class="slds-text-body_small ai-explanation-text" lwc:inner-html={draft.aiExplanation}></div>
+                          </div>
+                        </div>
+                        
+                        <!-- Donor Details -->
+                        <div class="slds-m-top_medium">
+                          <h3 class="slds-text-title_caps slds-m-bottom_x-small"><strong>Donor Profile</strong></h3>
+                          <ul class="slds-list_dotted slds-text-body_small">
+                            <li><strong>Type:</strong> {draft.donorType}</li>
+                            <li><strong>Lifetime Giving:</strong> ${draft.lifetimeGiving}</li>
+                            <li><strong>Engagement Score:</strong> {draft.engagementScore}/100</li>
+                            <li><strong>Last Gift:</strong> {draft.lastGiftDate}</li>
+                            <li><strong>Preferred Contact:</strong> In-person</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+          
+          <!-- Modal Footer -->
+          <div class="slds-modal__footer">
+            <lightning-button 
+              label="Close" 
+              onclick={handleEmailDraftsModalClose}
+              class="slds-m-right_x-small">
+            </lightning-button>
+            <lightning-button 
+              label="Send All Emails" 
+              variant="brand"
+              onclick={handleSendAllEmails}>
+            </lightning-button>
           </div>
         </div>
       </div>

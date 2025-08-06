@@ -594,3 +594,73 @@
     }
 }
 
+/* Email Drafts Modal Styles */
+.email-drafts-content {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.email-draft-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+.email-draft-card .slds-card__header {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 16px;
+}
+
+.email-body-textarea {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    resize: vertical;
+    min-height: 300px;
+}
+
+.email-subject {
+    font-weight: 600;
+    background-color: #f9f9f9;
+}
+
+.ai-explanation-box {
+    background-color: #f0f8ff;
+    border: 1px solid #b3d9ff;
+    border-radius: 6px;
+    padding: 16px;
+    min-height: 200px;
+}
+
+.ai-explanation-text {
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+.ai-explanation-text strong {
+    color: #0250d9;
+}
+
+.email-drafts-list .slds-card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.email-drafts-list .slds-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s ease;
+}
+
+/* Modal size adjustments */
+.slds-modal_large .slds-modal__container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Donor profile styling */
+.slds-list_dotted li {
+    margin-bottom: 4px;
+}
+
+.slds-list_dotted li strong {
+    color: #3e3e3c;
+}
