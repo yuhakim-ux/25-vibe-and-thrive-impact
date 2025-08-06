@@ -187,16 +187,22 @@
                       <div class="slds-media__figure slds-p-left_medium ask-popover-container">
               <lightning-button label="Ask" variant="brand" onclick={handlePreviewAsk} class="slds-m-right_x-small"></lightning-button>
               <template if:true={isAskPopoverOpen}>
-                <section class="slds-popover slds-nubbin_bottom-left" role="dialog">
+                <section class="slds-popover" role="dialog">
+                  <header class="slds-popover__header">
+                    <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                      <h2 class="slds-text-heading_small">Ask</h2>
+                      <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close Ask popover" onclick={handleAskPopoverClose} size="small"></lightning-button-icon>
+                    </div>
+                  </header>
                   <div class="slds-popover__body">
                     <lightning-textarea name="ask" label="Tell me what you need!"></lightning-textarea>
                     <div class="slds-m-top_medium">
-                      <lightning-button label="Filter further to “Prefers in-person”" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
+                      <lightning-button label="Filter further to "Prefers in-person"" class="slds-button_stretch slds-m-bottom_small"></lightning-button>
                       <lightning-button label="Flag for Board Member Outreach" class="slds-button_stretch"></lightning-button>
                     </div>
                   </div>
-                  <footer class="slds-popover__footer">
-                    <lightning-button label="Apply" variant="brand" class="slds-p-left_xx-small slds-p-right_xx-small"></lightning-button>
+                  <footer class="slds-popover__footer slds-text-align_right">
+                    <lightning-button label="Apply" variant="brand"></lightning-button>
                   </footer>
                 </section>
               </template>

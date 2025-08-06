@@ -362,6 +362,10 @@ export default class DonorList extends LightningElement {
         this.isAskPopoverOpen = !this.isAskPopoverOpen;
     }
 
+    handleAskPopoverClose() {
+        this.isAskPopoverOpen = false;
+    }
+
     handlePreviewSave() {
         console.log('Save action triggered for upgrade potential sort');
         // Placeholder for save functionality
