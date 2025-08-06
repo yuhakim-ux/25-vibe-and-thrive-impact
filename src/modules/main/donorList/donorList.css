@@ -191,3 +191,139 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Agentforce Panel Styles */
+.agentforce-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    border-left: 1px solid #dddbda;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    animation: slideInFromRight 0.3s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.agentforce-header {
+    background: #f3f2f2;
+    border-bottom: 1px solid #dddbda;
+    flex-shrink: 0;
+}
+
+.agentforce-chat-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.agentforce-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+.agentforce-input {
+    flex-shrink: 0;
+    background: white;
+}
+
+/* Chat Message Styles */
+.slds-chat-message {
+    max-width: 280px;
+}
+
+.slds-chat-message_inbound {
+    background: #f3f2f2;
+    border: 1px solid #dddbda;
+    border-radius: 12px 12px 12px 4px;
+}
+
+.slds-chat-message_outbound {
+    background: #0176d3;
+    color: white;
+    border-radius: 12px 12px 4px 12px;
+    margin-left: auto;
+}
+
+.slds-chat-message__text {
+    padding: 12px 16px;
+    word-wrap: break-word;
+}
+
+.slds-chat-message__text_outbound {
+    color: white;
+}
+
+/* Typing Animation */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #706e6b;
+    animation: typingAnimation 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0;
+}
+
+@keyframes typingAnimation {
+    0%, 80%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Textarea styling for chat input */
+.agentforce-input .slds-textarea {
+    border: none;
+    resize: none;
+    min-height: 60px;
+    max-height: 120px;
+    padding: 12px;
+}
+
+.agentforce-input .slds-textarea:focus {
+    border: none;
+    box-shadow: none;
+}
+
+/* Avatar gradient for AI */
+.slds-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

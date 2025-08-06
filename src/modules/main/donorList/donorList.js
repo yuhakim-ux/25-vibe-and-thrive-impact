@@ -63,10 +63,17 @@ export default class DonorList extends LightningElement {
     @track isAskPopoverOpen = false;
     @track isFiltered = false;
     @track filterType = '';
+    @track isAgentforcePanelOpen = false;
+    @track chatMessages = [];
+    @track chatInputValue = '';
     columns = COLUMNS;
 
     get containerClass() {
         return `donor-list-container ${this.showPreviewBar ? 'preview-mode' : ''}`;
+    }
+
+    get isChatInputEmpty() {
+        return !this.chatInputValue || this.chatInputValue.trim().length === 0;
     }
 
     connectedCallback() {
@@ -443,7 +450,7 @@ export default class DonorList extends LightningElement {
     handleInviteToEvent() {
         console.log('Invite All to Exclusive Event action triggered');
         this.isAskPopoverOpen = false;
-        // Placeholder for event invitation functionality
+        this.openAgentforcePanel();
     }
 
     handleAssignToMGO() {
@@ -455,5 +462,118 @@ export default class DonorList extends LightningElement {
     handlePreviewSave() {
         console.log('Save action triggered for upgrade potential sort');
         // Placeholder for save functionality
+    }
+
+    // Agentforce Panel Methods
+    openAgentforcePanel() {
+        this.isAgentforcePanelOpen = true;
+        this.chatMessages = [];
+        
+        // Add initial typing message
+        const typingMessage = {
+            id: 'typing-1',
+            content: '',
+            isAI: true,
+            isTyping: true,
+            cssClass: 'chat-message ai-message'
+        };
+        
+        this.chatMessages = [...this.chatMessages, typingMessage];
+        
+        // Simulate typing delay and show the actual message
+        setTimeout(() => {
+            this.showAIMessage();
+        }, 2000); // 2 second typing animation
+    }
+
+    showAIMessage() {
+        const aiMessage = {
+            id: 'ai-message-1',
+            content: `I found a few upcoming Exclusive Events that the 8 donors might be interested in, based on their current locations and preference for in-person experiences.
+            
+            <br><br>Would you like me to draft email invitations for them accordingly?
+            
+            <br><br>1. <strong>Gala Night for Community Impact</strong> – October 12, 2024 – San Francisco, CA<br>
+            2. <strong>Innovators' Roundtable: Shaping the Future</strong> – October 25, 2024 – Palo Alto, CA<br>
+            3. <strong>Private Art Exhibit & Reception</strong> – November 3, 2024 – New York, NY<br>
+            4. <strong>Sustainable Futures Summit</strong> – November 7, 2024 – Seattle, WA`,
+            isAI: true,
+            isTyping: false,
+            cssClass: 'chat-message ai-message'
+        };
+        
+        // Remove typing message and add actual message
+        this.chatMessages = [aiMessage];
+    }
+
+    handleAgentforceClose() {
+        this.isAgentforcePanelOpen = false;
+        this.chatMessages = [];
+        this.chatInputValue = '';
+    }
+
+    handleChatInputChange(event) {
+        this.chatInputValue = event.target.value;
+    }
+
+    handleChatInputKeydown(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            this.handleSendMessage();
+        }
+    }
+
+    handleSendMessage() {
+        if (this.isChatInputEmpty) {
+            return;
+        }
+
+        const userMessage = {
+            id: `user-message-${Date.now()}`,
+            content: this.chatInputValue,
+            isAI: false,
+            isTyping: false,
+            cssClass: 'chat-message user-message'
+        };
+
+        this.chatMessages = [...this.chatMessages, userMessage];
+        
+        // Check if user said "Sounds good." and respond accordingly
+        if (this.chatInputValue.toLowerCase().trim() === 'sounds good.' || 
+            this.chatInputValue.toLowerCase().trim() === 'sounds good') {
+            this.handleSoundsGoodResponse();
+        }
+
+        this.chatInputValue = '';
+    }
+
+    handleSoundsGoodResponse() {
+        // Add typing indicator
+        const typingMessage = {
+            id: `typing-${Date.now()}`,
+            content: '',
+            isAI: true,
+            isTyping: true,
+            cssClass: 'chat-message ai-message'
+        };
+        
+        this.chatMessages = [...this.chatMessages, typingMessage];
+        
+        // Show response after typing delay
+        setTimeout(() => {
+            const aiResponse = {
+                id: `ai-response-${Date.now()}`,
+                content: `Great! I've drafted personalized emails for all 8 donors, including their names and recent interests based on their past activities.
+                
+                <br><br>Is there anything else I can help with?`,
+                isAI: true,
+                isTyping: false,
+                cssClass: 'chat-message ai-message'
+            };
+            
+            // Remove typing message and add response
+            const messagesWithoutTyping = this.chatMessages.filter(msg => !msg.isTyping);
+            this.chatMessages = [...messagesWithoutTyping, aiResponse];
+        }, 1500);
     }
 }
