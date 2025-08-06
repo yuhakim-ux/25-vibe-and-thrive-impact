@@ -157,15 +157,26 @@
     }
 }
 
-.preview-mode .slds-col:not(:has(.slds-scoped-notification)),
-.preview-mode .slds-page-header,
-.preview-mode .utility-bar {
-    filter: blur(4px);
+.preview-mode::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(4px);
+    z-index: 1;
 }
 
-.preview-mode .data-table-container {
+.preview-mode .slds-scoped-notification,
+.preview-mode .main-content {
+    position: relative;
+    z-index: 2;
+}
+
+.preview-mode .main-content {
     border: 3px solid #066AFE;
-    border-radius: 8px; /* To round the corners of the border */
-    overflow: hidden; /* To ensure the border wraps the datatable */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
