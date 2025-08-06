@@ -547,7 +547,20 @@ export default class DonorList extends LightningElement {
             this.handleSoundsGoodResponse();
         }
 
+        // Clear the input value and DOM element
         this.chatInputValue = '';
+        
+        // Force clear the DOM element with a slight delay to ensure it takes effect
+        setTimeout(() => {
+            const textareaElement = this.template.querySelector('.agentforce-textarea');
+            if (textareaElement) {
+                textareaElement.value = '';
+                textareaElement.textContent = '';
+                textareaElement.focus();
+                textareaElement.blur();
+                textareaElement.focus();
+            }
+        }, 0);
     }
 
     handleSoundsGoodResponse() {
