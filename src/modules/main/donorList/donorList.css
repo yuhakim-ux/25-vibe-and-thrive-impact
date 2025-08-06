@@ -157,25 +157,19 @@
     }
 }
 
-.preview-mode::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    backdrop-filter: blur(4px);
-    z-index: 1;
+.preview-mode .global-header,
+.preview-mode .app-navigation,
+.preview-mode .slds-page-header,
+.preview-mode .utility-bar {
+    filter: blur(4px);
+    pointer-events: none;
 }
 
+/* Don't blur the preview bar and main content */
 .preview-mode .slds-scoped-notification,
 .preview-mode .main-content {
-    position: relative;
-    z-index: 2;
-}
-
-.preview-mode .slds-scoped-notification {
-    z-index: 3;
+    filter: none;
+    pointer-events: auto;
 }
 
 .preview-mode .main-content {
@@ -188,107 +182,12 @@
     position: relative;
 }
 
-/* Ask Popover Custom Styling */
-.ask-popover-custom {
+.ask-popover-container .slds-popover {
+    z-index: 10 !important;
     position: absolute;
     top: 45px;
     right: 0;
-    width: 318px;
-    background: white;
-    border-radius: 12px;
+    min-width: 300px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    z-index: 10 !important;
-    overflow: hidden;
-}
-
-.ask-popover-header {
-    padding: 8px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.ask-popover-title {
-    color: #03234D;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 22px;
-    text-align: center;
-    flex: 1;
-}
-
-.ask-popover-close {
-    position: absolute;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.ask-popover-body {
-    padding: 0 12px 12px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.ask-input-container {
-    padding: 16px 12px;
-    background: #F0F4F8;
-    border-radius: 12px;
-}
-
-.ask-input-placeholder {
-    color: #2E2E2E;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 17px;
-}
-
-.ask-suggestions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.ask-suggestion-button {
-    height: 32px;
-    padding: 1px 16px;
-    background: white;
-    border: 1px solid #5C5C5C;
-    border-radius: 9999px;
-    color: #0250D9;
-    font-size: 14px;
-    font-weight: 590;
-    line-height: 19px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.ask-suggestion-button:hover {
-    background: #f8f9fa;
-    border-color: #0250D9;
-}
-
-.ask-popover-footer {
-    padding: 8px 12px;
-    background: white;
-    border-top: 1px solid #C9C9C9;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 8px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.ask-apply-button {
-    height: 32px;
-    padding: 1px 16px;
-    background: #066AFE;
-    border-radius: 9999px;
-    color: white;
-    font-size: 14px;
-    font-weight: 590;
-    line-height: 19px;
 }
 
