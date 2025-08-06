@@ -81,7 +81,7 @@ export default class DonorList extends LightningElement {
         return !this.chatInputValue || this.chatInputValue.trim().length === 0;
     }
 
-    get shouldShowRefinementPopover() {
+    get showRefinementPopover() {
         return this.isRefinementPopoverOpen && this.currentRefinementDraftId;
     }
 
@@ -750,16 +750,37 @@ P.S. Light refreshments and networking reception will follow the main presentati
         this.currentRefinementDraftId = draftId;
         this.isRefinementPopoverOpen = true;
         this.refinementPrompt = '';
+        
+        // Add the draft ID to each email draft for conditional rendering
+        this.emailDrafts = this.emailDrafts.map(draft => ({
+            ...draft,
+            showPopover: draft.id === draftId
+        }));
     }
 
     handleCloseRefinement() {
         this.isRefinementPopoverOpen = false;
         this.currentRefinementDraftId = '';
         this.refinementPrompt = '';
+        
+        // Clear the showPopover flag from all drafts
+        this.emailDrafts = this.emailDrafts.map(draft => ({
+            ...draft,
+            showPopover: false
+        }));
     }
 
     handleRefinementPromptChange(event) {
         this.refinementPrompt = event.target.value;
+    }
+
+    handlePromptKeyDown(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            if (this.refinementPrompt.trim()) {
+                this.handleCustomRefinement();
+            }
+        }
     }
 
     handleRefinementOption(event) {
@@ -801,9 +822,6 @@ P.S. Light refreshments and networking reception will follow the main presentati
                         break;
                     case 'bulletize':
                         refinedBody = this.bulletizeEmail(draft.emailBody);
-                        break;
-                    case 'summarize':
-                        refinedBody = this.summarizeEmail(draft.emailBody);
                         break;
                     case 'custom':
                         refinedBody = this.customRefineEmail(draft.emailBody, customPrompt);
@@ -866,20 +884,7 @@ P.S. Light refreshments and networking reception will follow the main presentati
         return bulletized;
     }
 
-    summarizeEmail(originalBody) {
-        // Create a concise summary
-        const donor = this.emailDrafts.find(d => d.id === this.currentRefinementDraftId);
-        return `Dear ${donor.donorName.includes(' ') ? donor.donorName.split(' ')[0] : donor.donorName},
 
-I'd like to invite you to an exclusive community event on ${donor.primaryEvent.date} in ${donor.primaryEvent.location}.
-
-Given your support and preference for in-person engagement, this intimate gathering would be perfect for you.
-
-Please let me know if you can join us.
-
-Best regards,
-[Your Name]`;
-    }
 
     customRefineEmail(originalBody, prompt) {
         // Simulate custom AI refinement based on prompt

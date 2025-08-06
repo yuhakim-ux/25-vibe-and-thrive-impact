@@ -673,18 +673,21 @@
     margin-bottom: 8px;
 }
 
-.refinement-icon-container {
+.refinement-button-container {
     position: relative;
     display: inline-block;
+    margin-left: 10px;
 }
 
-.refinement-edit-icon {
+.refinement-edit-button {
     color: #0250d9;
     cursor: pointer;
+    padding: 4px 8px;
 }
 
-.refinement-edit-icon:hover {
+.refinement-edit-button:hover {
     color: #014486;
+    background-color: #f3f3f3;
 }
 
 .refinement-popover-container {
