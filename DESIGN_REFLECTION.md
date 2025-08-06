@@ -16,13 +16,36 @@ We successfully built a fully interactive Salesforce donor management prototype 
 
 ## 🚀 High-Level Approach & Step-by-Step Guide
 
+### **Phase 0: Pre-vibe Coding Steps**
+1. **Define the Vision**
+   - Define the essence of What the prototype should accomplish
+   - In our case, enabling users to quickly act on donor insights via AI-powered sorting and filtering in the Salesforce list view
+   - Write a mini-PRD, outlining the prototype we want to build
+  
+2. **Map the High-Level Interaction Flow**
+   - Brainstorming the userflow that shapes the prototype’s scope from entry point to completion
+     (eg.)
+      - User clicks AI sprinkle icon in list view header
+      - Popover appears with AI suggestions (sort/filter)
+      - Selecting an option triggers preview state with blue border + blurred background
+      - User can refine list via Ask popover and chained actions
+      - User exits preview to return to default list view
+
+3. **Detail the Key Feature/Specs**
+   - Break down each core interaction into clear visual and functional requirements
+     (eg.)
+      - Trigger: What user action starts it
+      - State changes: What updates in the UI
+      - Visuals: Reference exact Figma spacing, typography, and color tokens
+      - Functionality: How sorting, filtering, and follow-up actions work
+
 ### **Phase 1: Foundation & Framework Setup**
 1. **Environment Preparation**
    - Started with LWC-SLDS starter template
    - Configured Lightning Web Runtime (LWR) development environment
    - Established proper SLDS compliance hierarchy
 
-2. **Design System Alignment**
+2. **Established build rules for Cursor**
    - Prioritized Lightning Base Components over custom implementations
    - Followed SLDS utility classes → styling hooks → custom CSS hierarchy
    - Ensured WCAG 2.1 accessibility compliance throughout
@@ -45,7 +68,7 @@ We successfully built a fully interactive Salesforce donor management prototype 
    - Created preview mode with background blur effects
 
 6. **Agentforce Integration**
-   - Developed full-height conversational chat interface
+   - Developed conversational chat interface
    - Added typing animations and realistic AI responses
    - Implemented contextual recommendations based on donor data
 
@@ -88,10 +111,15 @@ fundraisers. Follow these rules for implementation:
 
 ### **Prompt Categories That Worked Well**
 
+- **Provide Context About**: User Requirements: "End users are [jobperformer: nonprofit fundraiser], who would use this tool to [JTBD]"
+- **Timeline/Priority**: "This is for a demo tomorrow, focus on core functionality first"
 - **Visual Alignment**: "Match the Figma design exactly with proper spacing"
+- **Exact Requirements**: Instead of "make it look good" → "use 16px padding, #3B82F6 blue, and Roboto font"
 - **Interaction Details**: "When X is clicked, Y should happen with Z visual feedback"
+- **Iterative Development**: "Start with a simple version, then enhance it step by step"
 - **Technical Implementation**: "Use Lightning Base Components first, then SLDS utilities"
 - **Error Resolution**: "Fix the [specific issue] while maintaining [specific requirement]"
+- **Success Criteria**: Instead of "optimize performance" → "reduce initial load time to under 2 seconds"
 
 ---
 
