@@ -338,7 +338,15 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 24px;
+}
+
+.agentforce-message {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.agentforce-message:last-child {
+    margin-bottom: 0;
 }
 
 /* AI Message */
