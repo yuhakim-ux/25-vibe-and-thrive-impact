@@ -62,6 +62,10 @@ export default class DonorList extends LightningElement {
     @track showPreviewBar = false;
     columns = COLUMNS;
 
+    get containerClass() {
+        return `donor-list-container ${this.showPreviewBar ? 'preview-mode' : ''}`;
+    }
+
     connectedCallback() {
         this.loadDonorData();
     }
