@@ -702,6 +702,7 @@
 
 .refinement-edit-button-custom svg {
     display: block;
+    pointer-events: none;
 }
 
 .refinement-popover-container {

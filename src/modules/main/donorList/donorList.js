@@ -746,7 +746,21 @@ P.S. Light refreshments and networking reception will follow the main presentati
 
     // Email Refinement Methods
     handleOpenRefinement(event) {
-        const draftId = event.target.dataset.draftId;
+        // Find the button element (in case SVG was clicked)
+        let buttonElement = event.target;
+        while (buttonElement && !buttonElement.dataset.draftId) {
+            buttonElement = buttonElement.parentElement;
+        }
+        
+        const draftId = buttonElement ? buttonElement.dataset.draftId : null;
+        
+        if (!draftId) {
+            console.error('Draft ID not found');
+            return;
+        }
+        
+        console.log('Opening refinement for draft:', draftId);
+        
         this.currentRefinementDraftId = draftId;
         this.isRefinementPopoverOpen = true;
         this.refinementPrompt = '';
