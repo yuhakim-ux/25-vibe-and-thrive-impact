@@ -174,7 +174,7 @@
     z-index: 6; /* Higher z-index to stay on top */
 }
 
-.preview-mode .main-content lightning-datatable {
+.preview-mode .data-table-container {
     border-radius: 8px;
     outline: 3px solid #066AFE;
     outline-offset: 2px;
