@@ -435,15 +435,32 @@
                               <strong>Email Draft</strong>
                             </label>
                             <div class="refinement-button-container">
-                              <lightning-button 
-                                icon-name="utility:edit" 
-                                variant="bare" 
-                                alternative-text="Refine with AI" 
+                              <button 
+                                class="refinement-edit-button-custom" 
                                 onclick={handleOpenRefinement}
                                 data-draft-id={draft.id}
-                                size="x-small"
-                                class="refinement-edit-button">
-                              </lightning-button>
+                                title="Refine with AI">
+                                <svg width="32" height="24" viewBox="0 0 88 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g filter="url(#filter0_d_94_196330)">
+                                    <path d="M36 20.5H52C60.5604 20.5 67.5 27.4396 67.5 36C67.5 44.5604 60.5604 51.5 52 51.5H36C27.4396 51.5 20.5 44.5604 20.5 36C20.5 27.4396 27.4396 20.5 36 20.5Z" fill="white"/>
+                                    <path d="M36 20.5H52C60.5604 20.5 67.5 27.4396 67.5 36C67.5 44.5604 60.5604 51.5 52 51.5H36C27.4396 51.5 20.5 44.5604 20.5 36C20.5 27.4396 27.4396 20.5 36 20.5Z" stroke="#5C5C5C"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M38.9222 38.2778L41.6594 41.0159C41.7824 41.1389 41.9669 41.1389 42.0899 41.0159L48.9175 34.1553C49.0405 34.0322 49.0405 33.8476 48.9175 33.7246L46.2111 31.0173C46.0881 30.8942 45.9035 30.8942 45.7805 31.0173L38.9222 37.8778C38.7991 38.0009 38.7991 38.1855 38.9222 38.2778V38.2778ZM47.1029 29.756C46.9799 29.879 46.9799 30.0636 47.1029 30.1867L49.8093 32.894C49.9323 33.0171 50.1169 33.0171 50.2399 32.894L51.0088 32.1249C51.5008 31.6634 51.5008 30.925 51.0088 30.4328L49.5633 28.9869C49.0712 28.4946 48.3023 28.4946 47.8103 28.9869L47.1029 29.756V29.756ZM36.6463 42.8311C36.5848 43.1387 36.8616 43.4156 37.1692 43.3541L40.5214 42.5542C40.6445 42.5234 40.7367 42.4619 40.7982 42.4004L40.8598 42.3388C40.9213 42.2773 40.952 42.062 40.829 41.9389L38.0611 39.1701C37.938 39.047 37.7228 39.0778 37.6612 39.1393L37.5997 39.2008C37.5075 39.2931 37.4767 39.3854 37.446 39.4777L36.6463 42.8311V42.8311Z" fill="#0250D9"/>
+                                    <path d="M41.6493 31.1939L40.5289 31.7536C40.192 31.9209 39.9209 32.1943 39.7524 32.5301L39.1928 33.6493C39.1132 33.8086 38.8847 33.8086 38.8051 33.6493L38.2455 32.5301C38.0782 32.1943 37.8047 31.922 37.4689 31.7536L36.3509 31.1939C36.1916 31.1143 36.1916 30.8859 36.3509 30.8063L37.4713 30.2466C37.8082 30.0793 38.0793 29.8059 38.2478 29.4701L38.8063 28.3509C38.8859 28.1916 39.1143 28.1916 39.1939 28.3509L39.7536 29.4701C39.9209 29.8059 40.1943 30.0782 40.5301 30.2466L41.6505 30.8063C41.8097 30.8859 41.8097 31.1143 41.6505 31.1939H41.6493Z" fill="#0250D9"/>
+                                  </g>
+                                  <defs>
+                                    <filter id="filter0_d_94_196330" x="0" y="0" width="88" height="72" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                      <feOffset/>
+                                      <feGaussianBlur stdDeviation="10"/>
+                                      <feComposite in2="hardAlpha" operator="out"/>
+                                      <feColorMatrix type="matrix" values="0 0 0 0 0.775259 0 0 0 0 0.895397 0 0 0 0 1 0 0 0 1 0"/>
+                                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_94_196330"/>
+                                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_94_196330" result="shape"/>
+                                    </filter>
+                                  </defs>
+                                </svg>
+                              </button>
                               
                               <!-- Refinement Popover - Only show for current draft -->
                               <template if:true={draft.showPopover}>

@@ -679,15 +679,29 @@
     margin-left: 10px;
 }
 
-.refinement-edit-button {
-    color: #0250d9;
+.refinement-edit-button-custom {
+    background: none;
+    border: none;
     cursor: pointer;
-    padding: 4px 8px;
+    padding: 4px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 }
 
-.refinement-edit-button:hover {
-    color: #014486;
+.refinement-edit-button-custom:hover {
     background-color: #f3f3f3;
+    transform: translateY(-1px);
+}
+
+.refinement-edit-button-custom:active {
+    transform: translateY(0);
+}
+
+.refinement-edit-button-custom svg {
+    display: block;
 }
 
 .refinement-popover-container {
