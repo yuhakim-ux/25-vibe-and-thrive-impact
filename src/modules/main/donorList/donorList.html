@@ -449,32 +449,24 @@
                               <!-- Refinement Popover - Only show for current draft -->
                               <template if:true={draft.showPopover}>
                                 <div class="refinement-popover-container">
-                                        <div class="slds-popover slds-nubbin_top-left slds-popover_medium refinement-popover" role="dialog">
+                                        <div class="slds-popover slds-popover_medium refinement-popover" role="dialog">
                                           <!-- Popover Header -->
                                           <div class="slds-popover__header">
-                                            <h2 class="slds-text-heading_small">Modify with a prompt</h2>
-                                            <lightning-button-icon 
-                                              icon-name="utility:close" 
-                                              variant="bare" 
-                                              alternative-text="Close" 
-                                              onclick={handleCloseRefinement}
-                                              size="x-small"
-                                              class="slds-float_right">
-                                            </lightning-button-icon>
+                                            <h2 class="slds-text-heading_small">Modify Draft</h2>
                                           </div>
                                           
                                           <!-- Popover Body -->
                                           <div class="slds-popover__body">
                                             <!-- Custom Prompt Input -->
                                             <div class="slds-form-element slds-m-bottom_medium">
-                                              <textarea 
-                                                class="slds-textarea" 
-                                                placeholder="Describe how you'd like to modify this email..."
-                                                value={refinementPrompt}
-                                                onchange={handleRefinementPromptChange}
-                                                onkeydown={handlePromptKeyDown}
-                                                rows="3">
-                                              </textarea>
+                                                                                          <textarea 
+                                              class="slds-textarea" 
+                                              placeholder="Modify with a prompt"
+                                              value={refinementPrompt}
+                                              onchange={handleRefinementPromptChange}
+                                              onkeydown={handlePromptKeyDown}
+                                              rows="3">
+                                            </textarea>
                                             </div>
                                             
                                             <!-- Preset Options -->
@@ -496,7 +488,7 @@
                                                 <span>More formal</span>
                                               </div>
                                               <div class="refinement-option" onclick={handleRefinementOption} data-option="casual">
-                                                <lightning-icon icon-name="utility:emoji" size="x-small" class="refinement-option-icon"></lightning-icon>
+                                                <lightning-icon icon-name="utility:chat" size="x-small" class="refinement-option-icon"></lightning-icon>
                                                 <span>More casual</span>
                                               </div>
                                               <div class="refinement-option" onclick={handleRefinementOption} data-option="bulletize">

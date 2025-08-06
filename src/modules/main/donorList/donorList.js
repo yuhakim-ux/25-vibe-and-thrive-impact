@@ -759,17 +759,28 @@ P.S. Light refreshments and networking reception will follow the main presentati
             return;
         }
         
-        console.log('Opening refinement for draft:', draftId);
+        // Check if this popover is already open for this draft
+        const currentDraft = this.emailDrafts.find(draft => draft.id === draftId);
+        const isCurrentlyOpen = currentDraft && currentDraft.showPopover;
         
-        this.currentRefinementDraftId = draftId;
-        this.isRefinementPopoverOpen = true;
-        this.refinementPrompt = '';
-        
-        // Add the draft ID to each email draft for conditional rendering
-        this.emailDrafts = this.emailDrafts.map(draft => ({
-            ...draft,
-            showPopover: draft.id === draftId
-        }));
+        if (isCurrentlyOpen) {
+            // Close the popover
+            console.log('Closing refinement for draft:', draftId);
+            this.handleCloseRefinement();
+        } else {
+            // Open the popover
+            console.log('Opening refinement for draft:', draftId);
+            
+            this.currentRefinementDraftId = draftId;
+            this.isRefinementPopoverOpen = true;
+            this.refinementPrompt = '';
+            
+            // Add the draft ID to each email draft for conditional rendering
+            this.emailDrafts = this.emailDrafts.map(draft => ({
+                ...draft,
+                showPopover: draft.id === draftId
+            }));
+        }
     }
 
     handleCloseRefinement() {
